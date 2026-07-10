@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIVIAN(JONASH) // PERFECT SINGULARITY</title>
+    <title>voidXcyber // QUANTUM SINGULARITY</title>
     <style>
         :root {
-            --space-black: #010002;
+            --space-black: #020005;
             --void-core: #000000;
-            --void-purple: #7e00ff;
-            --deep-violet: #2b0054;
-            --neon-cyan: #00f0ff;
+            --cyber-purple: #9d00ff;
+            --cyber-dark: #120024;
+            --cyber-neon: #00f6ff;
             --font-display: 'Impact', 'Arial Black', sans-serif;
         }
 
@@ -31,82 +31,82 @@
             color: #fff;
         }
 
-        /* --- BACKGROUND SPACE SIMULATION LAYER --- */
+        /* --- BACKGROUND VIRTUAL ENVIRONMENT --- */
         .universe-bg {
             position: absolute;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle at center, #06000d 0%, var(--space-black) 100%);
+            background: radial-gradient(circle at center, #0b001a 0%, var(--space-black) 100%);
             z-index: 1;
             overflow: hidden;
             transform: translateZ(0);
         }
 
-        .starfield {
+        .cyber-grid {
             position: absolute;
             width: 200%; height: 200%;
             top: -50%; left: -50%;
             background-image: 
-                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-                radial-gradient(rgba(126, 0, 255, 0.04) 2px, transparent 2px);
-            background-size: 80px 80px, 160px 160px;
-            animation: cosmicDrift 140s linear infinite;
+                linear-gradient(rgba(157, 0, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(157, 0, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg);
+            animation: gridScroll 40s linear infinite;
             z-index: 2;
-            pointer-events: none;
+            opacity: 0.7;
         }
 
-        /* --- RE-ENGINEERED PERFECTLY ROUND SMOOTH BLACK HOLE --- */
+        /* --- SUPER ROUND PERFECT SINGULARITY NODE --- */
         .black-hole-viewport {
             position: absolute;
             top: 50%; left: 50%;
-            width: 85vmin; height: 85vmin;
-            max-width: 580px; max-height: 580px;
+            width: 80vmin; height: 80vmin;
+            max-width: 520px; max-height: 520px;
             z-index: 3;
             display: flex;
             justify-content: center;
             align-items: center;
             
-            /* Fluid, anti-aliased floating movement pathing */
-            animation: cinematicDrift 18s ease-in-out infinite alternate;
+            /* Ultra-smooth organic drifting movement */
+            animation: perfectFloat 14s ease-in-out infinite alternate;
             will-change: transform;
             transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Outer Gravitational Light Halos (Perfect curved circles with high blur to simulate lensing) */
-        .gravitational-lens-halo {
+        /* Perfectly circular gravitational energy orbits */
+        .singularity-glow-outer {
             position: absolute;
-            width: 90%; height: 90%;
+            width: 100%; height: 100%;
             border-radius: 50%;
-            background: radial-gradient(circle at center, transparent 40%, var(--void-purple) 55%, var(--deep-violet) 75%, transparent 100%);
+            background: radial-gradient(circle at center, transparent 45%, var(--cyber-purple) 60%, rgba(0, 246, 255, 0.3) 75%, transparent 100%);
             z-index: 4;
-            opacity: 0.85;
-            filter: blur(12px);
-            animation: energyPulse 4s ease-in-out infinite alternate;
+            filter: blur(14px);
+            animation: spinClockwise 25s linear infinite;
         }
 
-        /* Perfectly round, cross-cutting accretion plane without harsh 3D squashing matrix */
-        .accretion-flat-disk {
+        .singularity-glow-inner {
             position: absolute;
-            width: 125%; height: 26%;
-            background: radial-gradient(ellipse at center, transparent 25%, var(--void-purple) 45%, var(--deep-violet) 65%, transparent 75%);
-            transform: rotate(-6deg);
-            z-index: 7;
-            opacity: 0.95;
-            filter: blur(4px);
-            mix-blend-mode: screen;
-            animation: diskWobble 6s ease-in-out infinite alternate;
+            width: 75%; height: 75%;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, transparent 35%, rgba(157, 0, 255, 0.8) 50%, var(--cyber-neon) 70%, transparent 90%);
+            z-index: 5;
+            filter: blur(6px);
+            animation: spinCounterClockwise 15s linear infinite;
         }
 
-        /* Perfect Pitch-Black Spherical Event Horizon Shadow Core */
+        /* Flawless Pitch-Black Event Horizon Core Shadow */
         .shadow-core {
-            width: 44%; height: 44%;
+            width: 48%; height: 48%;
             background: var(--void-core);
             border-radius: 50%;
             z-index: 6;
-            box-shadow: 0 0 35px #000, 0 0 70px rgba(0, 0, 0, 0.9), inset 0 0 40px #000;
+            box-shadow: 
+                0 0 40px #000, 
+                0 0 70px var(--cyber-purple), 
+                inset 0 0 30px #000;
         }
 
-        /* --- STAGE MANAGEMENT SYSTEM --- */
+        /* --- STAGE CONFIGURATOR PANELS --- */
         .viewport-stage {
             position: absolute;
             top: 0; left: 0;
@@ -125,40 +125,41 @@
             pointer-events: none !important;
         }
 
-        /* --- STAGE 1: METRIC DEPLOY TIMELINE --- */
+        /* --- STAGE 1: BOOT SEQUENCER --- */
         .loading-title {
-            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             font-style: italic;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             margin-bottom: 25px;
-            text-shadow: 0 0 15px rgba(126, 0, 255, 0.5);
+            text-shadow: 0 0 15px var(--cyber-purple);
         }
 
         .bar-container {
-            width: min(85vw, 380px);
-            height: 6px;
+            width: min(85vw, 360px);
+            height: 4px;
             background: rgba(0, 0, 0, 0.9);
-            border: 1.5px solid var(--deep-violet);
-            border-radius: 1px;
+            border: 1px solid var(--cyber-purple);
             overflow: hidden;
         }
 
         .bar-fill {
             width: 0%; height: 100%;
-            background: linear-gradient(90deg, var(--deep-violet), var(--void-purple));
-            box-shadow: 0 0 10px var(--void-purple);
+            background: linear-gradient(90deg, var(--cyber-purple), var(--cyber-neon));
+            box-shadow: 0 0 12px var(--cyber-neon);
             transition: width 0.1s linear;
         }
 
         .percentage-display {
             font-family: monospace;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-top: 15px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            color: var(--cyber-neon);
+            text-shadow: 0 0 5px var(--cyber-neon);
         }
 
-        /* --- STAGE 2: MAXIMUM TRANSPARENT INTERFACE INTERACTORS --- */
+        /* --- STAGE 2: TRANSPARENT voidXcyber HUD --- */
         .system-branding {
             font-size: clamp(2.3rem, 6.5vw, 5.5rem);
             font-style: italic;
@@ -173,24 +174,24 @@
 
         .system-branding .left-half {
             color: #fff;
-            text-shadow: 2px 2px 0px #000, 0 0 20px rgba(126, 0, 255, 0.8);
+            text-shadow: 2px 2px 0px #000, 0 0 20px var(--cyber-purple);
             padding-right: 4px;
         }
 
         .system-branding .right-half {
             color: #fff;
-            text-shadow: 2px 2px 0px #000, 0 0 20px var(--neon-cyan);
+            text-shadow: 2px 2px 0px #000, 0 0 20px var(--cyber-neon);
             padding-left: 4px;
         }
 
         .system-branding::after {
-            content: '⚡';
-            font-size: 0.8em;
+            content: '×';
+            font-size: 0.9em;
             position: absolute;
-            left: 50%; top: 50%;
-            transform: translate(-50%, -50%) rotate(12deg);
+            left: 51%; top: 46%;
+            transform: translate(-50%, -50%);
             color: #fff;
-            text-shadow: 0 0 15px #fff, 0 0 20px var(--neon-cyan);
+            text-shadow: 0 0 15px #fff, 0 0 25px var(--cyber-neon);
         }
 
         .action-cluster {
@@ -216,30 +217,30 @@
             align-items: center;
             gap: 20px;
             transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), text-shadow 0.2s ease;
-            text-shadow: 0 0 8px rgba(126, 0, 255, 0.3);
+            text-shadow: 0 0 8px rgba(157, 0, 255, 0.3);
             -webkit-tap-highlight-color: transparent;
         }
 
         .node-singularity {
-            width: 10px; height: 10px;
+            width: 8px; height: 8px;
             background: #000;
             border-radius: 50%;
-            box-shadow: 0 0 10px 3px var(--void-purple), 0 0 18px 5px var(--deep-violet);
+            box-shadow: 0 0 10px 3px var(--cyber-purple), 0 0 15px 5px var(--cyber-dark);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .interactive-node:hover {
-            color: var(--neon-cyan);
-            text-shadow: 0 0 15px var(--neon-cyan);
+            color: var(--cyber-neon);
+            text-shadow: 0 0 15px var(--cyber-neon);
             transform: scale(1.06);
         }
 
         .interactive-node:hover .node-singularity {
-            box-shadow: 0 0 12px 5px var(--neon-cyan), 0 0 20px 7px #0077ff;
-            transform: scale(1.3);
+            box-shadow: 0 0 12px 5px var(--cyber-neon), 0 0 20px 7px #0084ff;
+            transform: scale(1.4);
         }
 
-        /* --- STAGE 3: METRIC PANEL SUB-MATRIX OVERLAY --- */
+        /* --- STAGE 3: PURE TRANSPARENT CYBER MODAL DATA BAR --- */
         .multiverse-grid {
             position: absolute;
             width: 100%; height: 100%;
@@ -257,37 +258,37 @@
 
         .mini-singularity {
             position: absolute;
-            width: 25vmin; height: 25vmin;
+            width: 20vmin; height: 20vmin;
             background: #000;
             border-radius: 50%;
-            box-shadow: 0 0 25px var(--void-purple), 0 0 50px var(--deep-violet);
-            animation: targetFloat 12s ease-in-out infinite alternate;
+            box-shadow: 0 0 20px var(--cyber-purple), 0 0 40px var(--cyber-dark);
+            animation: targetFloat 10s ease-in-out infinite alternate;
         }
 
-        /* Maximum Transparency Content Drawer Frame */
         .data-vault-panel {
             width: min(92vw, 740px);
             background: transparent;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 35px rgba(0, 240, 255, 0.25);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            border: 2px solid var(--cyber-neon);
+            box-shadow: 0 0 30px rgba(0, 246, 255, 0.2);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             padding: clamp(22px, 5vw, 42px);
-            border-radius: 4px;
+            border-radius: 2px;
             z-index: 15;
             display: flex;
             flex-direction: column;
         }
 
         .vault-title {
-            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            font-size: clamp(1.5rem, 4vw, 2.3rem);
             font-style: italic;
             text-transform: uppercase;
             color: #fff;
-            text-shadow: 0 0 12px var(--void-purple);
+            text-shadow: 0 0 12px var(--cyber-purple);
             margin-bottom: 20px;
-            border-bottom: 1px dashed rgba(255,255,255,0.25);
+            border-bottom: 1px dashed rgba(255,255,255,0.2);
             padding-bottom: 10px;
+            letter-spacing: 2px;
         }
 
         .vault-body {
@@ -295,94 +296,95 @@
             font-size: clamp(0.95rem, 2.5vw, 1.1rem);
             line-height: 1.6;
             color: #ffffff;
-            text-shadow: 1px 1px 3px #000, 0 0 4px rgba(0,0,0,0.8);
+            text-shadow: 1px 1px 3px #000;
             margin-bottom: 30px;
         }
 
         .vault-close-btn {
             background: transparent;
-            border: 2px solid var(--void-purple);
+            border: 2px solid var(--cyber-purple);
             color: #fff;
             padding: 12px 32px;
             font-family: var(--font-display);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-style: italic;
             text-transform: uppercase;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
             align-self: center;
-            text-shadow: 0 0 8px var(--void-purple);
+            text-shadow: 0 0 8px var(--cyber-purple);
+            letter-spacing: 1px;
             -webkit-tap-highlight-color: transparent;
         }
 
         .vault-close-btn:hover {
-            color: var(--neon-cyan);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-cyan);
+            color: var(--cyber-neon);
+            border-color: var(--cyber-neon);
+            box-shadow: 0 0 15px var(--cyber-neon);
             transform: scale(1.05);
         }
 
-        /* --- COLLAPSE ANIMATION OVERRIDES --- */
+        /* --- CINEMATIC TRANSITION STATES --- */
         .swallowed-by-singularity {
             animation: none !important;
-            transform: translate3d(-50%, -50%, 0) scale(8.5) !important;
+            transform: translate3d(-50%, -50%, 0) scale(9) !important;
             opacity: 0;
         }
 
         .menu-spaghettify {
-            transform: scale(0.5);
+            transform: scale(0.6);
             opacity: 0;
         }
 
-        /* --- HARDWARE PERFORMANCE CORE ANIMATIONS --- */
-        @keyframes cinematicDrift {
-            0% { transform: translate3d(-54%, -53%, 0); }
-            50% { transform: translate3d(-46%, -46%, 0); }
-            100% { transform: translate3d(-49%, -54%, 0); }
+        /* --- HIGH PERFORMANCE HARDWARE ANIMATIONS --- */
+        @keyframes perfectFloat {
+            0% { transform: translate3d(-53%, -52%, 0); }
+            50% { transform: translate3d(-47%, -47%, 0); }
+            100% { transform: translate3d(-50%, -55%, 0); }
         }
 
-        @keyframes energyPulse {
-            0% { transform: scale(0.98) rotate(0deg); opacity: 0.8; }
-            100% { transform: scale(1.03) rotate(45deg); opacity: 0.9; }
+        @keyframes spinClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        @keyframes diskWobble {
-            0% { transform: rotate(-7deg) scaleY(0.96); }
-            100% { transform: rotate(-4deg) scaleY(1.04); }
+        @keyframes spinCounterClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
         }
 
-        @keyframes cosmicDrift {
-            0% { transform: translate3d(0,0,0); }
-            100% { transform: translate3d(-40px, -40px, 0); }
+        @keyframes gridScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 200px; }
         }
 
         @keyframes targetFloat {
             0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-10px, -20px, 0); }
+            100% { transform: translate3d(-10px, -15px, 0); }
         }
     </style>
 </head>
 <body>
 
     <div class="universe-bg">
-        <div class="starfield"></div>
+        <div class="cyber-grid"></div>
         
         <div class="black-hole-viewport" id="mainBlackHole">
-            <div class="gravitational-lens-halo"></div>
+            <div class="singularity-glow-outer"></div>
+            <div class="singularity-glow-inner"></div>
             <div class="shadow-core"></div>
-            <div class="accretion-flat-disk"></div>
         </div>
 
         <div class="multiverse-grid" id="multiverseField">
-            <div class="mini-singularity" style="top: 15%; left: 8%; animation-delay: 0s; width: 14vmin; height: 14vmin;"></div>
-            <div class="mini-singularity" style="top: 68%; left: 12%; animation-delay: -2s; width: 25vmin; height: 25vmin;"></div>
-            <div class="mini-singularity" style="top: 18%; right: 10%; animation-delay: -4s; width: 20vmin; height: 20vmin;"></div>
-            <div class="mini-singularity" style="top: 64%; right: 6%; animation-delay: -1s; width: 16vmin; height: 16vmin;"></div>
+            <div class="mini-singularity" style="top: 12%; left: 6%; animation-delay: 0s; width: 14vmin; height: 14vmin;"></div>
+            <div class="mini-singularity" style="top: 70%; left: 10%; animation-delay: -2s; width: 22vmin; height: 22vmin;"></div>
+            <div class="mini-singularity" style="top: 20%; right: 8%; animation-delay: -4s; width: 18vmin; height: 18vmin;"></div>
+            <div class="mini-singularity" style="top: 66%; right: 5%; animation-delay: -1s; width: 15vmin; height: 15vmin;"></div>
         </div>
     </div>
 
     <div id="loaderStage" class="viewport-stage">
-        <h2 class="loading-title">Stabilizing Orbit</h2>
+        <h2 class="loading-title">voidXcyber // Initialize</h2>
         <div class="bar-container">
             <div class="bar-fill" id="progressBar"></div>
         </div>
@@ -391,7 +393,7 @@
 
     <div id="menuStage" class="viewport-stage hidden">
         <h1 class="system-branding">
-            <span class="left-half">VIVIAN</span><span class="right-half">(JONASH)</span>
+            <span class="left-half">void</span><span class="right-half">cyber</span>
         </h1>
         <div class="action-cluster">
             <button class="interactive-node" onclick="swallowSequence('codm')">
@@ -409,23 +411,23 @@
 
     <div id="vaultStage" class="viewport-stage hidden">
         <div class="data-vault-panel">
-            <h2 class="vault-title" id="vaultHeader">CODM // SUB-SPACE METRICS</h2>
+            <h2 class="vault-title" id="vaultHeader">SYSTEM LOGS //</h2>
             <div class="vault-body" id="vaultContent">
-                Isolated profile information successfully transmitted past the main accretion barrier. Core targeting tracking coordinates remain locked inside processing matrices.
+                Synchronizing terminal data streams directly inside the network layer.
             </div>
-            <button class="vault-close-btn" onclick="restoreFromUnknown()">[ ESCAPE MULTIVERSE ]</button>
+            <button class="vault-close-btn" onclick="restoreFromUnknown()">[ INITIALIZE DISCONNECT ]</button>
         </div>
     </div>
 
     <script>
-        // System Initialization Routine
+        // Automatic Network System Loader Progress Simulated Cycle
         window.addEventListener('DOMContentLoaded', () => {
             const bar = document.getElementById('progressBar');
             const txt = document.getElementById('progressText');
             let count = 0;
 
             const trackingLoop = setInterval(() => {
-                count += Math.floor(Math.random() * 6) + 3;
+                count += Math.floor(Math.random() * 7) + 4;
                 if (count >= 100) {
                     count = 100;
                     clearInterval(trackingLoop);
@@ -436,10 +438,10 @@
                 }
                 bar.style.width = count + "%";
                 txt.innerText = count + "%";
-            }, 30);
+            }, 25:
         });
 
-        // Relativistic Consumption Effect Sequence
+        // Event Collapse Action Router Logic
         function swallowSequence(gameId) {
             const bh = document.getElementById('mainBlackHole');
             const menu = document.getElementById('menuStage');
@@ -450,11 +452,11 @@
             const body = document.getElementById('vaultContent');
 
             if (gameId === 'codm') {
-                head.innerText = "CODM // SUB-SPACE METRICS";
-                body.innerHTML = "Isolated profile information successfully transmitted past the main accretion barrier. Core targeting tracking coordinates remain locked inside processing matrices.";
+                head.innerText = "CODM DATA NODE // OPERATIONAL";
+                body.innerHTML = "Isolated user data files mapped inside virtual sector frame loops. Operational signals securely parsed and verified across current background arrays.";
             } else if (gameId === 'fnf') {
-                head.innerText = "FNF // FREQUENCY FRAGMENT";
-                body.innerHTML = "Acoustic control structures translated into non-linear vector frames. Local audio spectrum coordinates are currently maintaining stability within background tears.";
+                head.innerText = "FNF AUDIO STREAM // DEPLOYED";
+                body.innerHTML = "Acoustic sequence profiles synthesized into clean algorithmic arrays. Frequency fields remain responsive inside core matrix data vectors.";
             }
 
             bh.classList.add('swallowed-by-singularity');
@@ -469,7 +471,7 @@
             }, 600);
         }
 
-        // Return Matrix Logic Router
+        // Return HUD System Matrix Sequence Router
         function restoreFromUnknown() {
             const bh = document.getElementById('mainBlackHole');
             const menu = document.getElementById('menuStage');
@@ -489,5 +491,4 @@
         }
     </script>
 </body>
-                </html>
-    
+</html>
