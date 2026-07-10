@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIVIAN(JONASH) // 3D DEEP VOID</title>
+    <title>VIVIAN(JONASH) // PERFECT SINGULARITY</title>
     <style>
         :root {
             --space-black: #010002;
             --void-core: #000000;
-            --void-purple: rgba(140, 0, 255, 0.85);
-            --deep-violet: rgba(43, 0, 84, 0.5);
+            --void-purple: #7e00ff;
+            --deep-violet: #2b0054;
             --neon-cyan: #00f0ff;
             --font-display: 'Impact', 'Arial Black', sans-serif;
         }
@@ -31,7 +31,7 @@
             color: #fff;
         }
 
-        /* --- 3D CANVAS & BACKGROUND ENVIRONMENT --- */
+        /* --- BACKGROUND SPACE SIMULATION LAYER --- */
         .universe-bg {
             position: absolute;
             top: 0; left: 0;
@@ -39,7 +39,6 @@
             background: radial-gradient(circle at center, #06000d 0%, var(--space-black) 100%);
             z-index: 1;
             overflow: hidden;
-            perspective: 1000px; /* Establishes deep 3D spatial field */
             transform: translateZ(0);
         }
 
@@ -56,71 +55,58 @@
             pointer-events: none;
         }
 
-        /* --- HYPER-REALISTIC 3D MOVING BLACK HOLE --- */
+        /* --- RE-ENGINEERED PERFECTLY ROUND SMOOTH BLACK HOLE --- */
         .black-hole-viewport {
             position: absolute;
             top: 50%; left: 50%;
             width: 85vmin; height: 85vmin;
-            max-width: 600px; max-height: 600px;
+            max-width: 580px; max-height: 580px;
             z-index: 3;
             display: flex;
             justify-content: center;
             align-items: center;
-            transform-style: preserve-3d;
             
-            /* High-performance multi-axis physical drifting animation */
-            animation: spatial3DOrbit 24s ease-in-out infinite alternate;
+            /* Fluid, anti-aliased floating movement pathing */
+            animation: cinematicDrift 18s ease-in-out infinite alternate;
             will-change: transform;
-            transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Rear Gravitational Light Distortion (Sits behind core) */
-        .gravitational-lens-vertical {
+        /* Outer Gravitational Light Halos (Perfect curved circles with high blur to simulate lensing) */
+        .gravitational-lens-halo {
             position: absolute;
-            width: 80%; height: 110%;
+            width: 90%; height: 90%;
             border-radius: 50%;
-            background: radial-gradient(circle at center, transparent 35%, var(--void-purple) 55%, var(--deep-violet) 75%, transparent 90%);
-            transform: translateZ(-40px) scaleY(0.85) rotate(-8deg);
+            background: radial-gradient(circle at center, transparent 40%, var(--void-purple) 55%, var(--deep-violet) 75%, transparent 100%);
             z-index: 4;
             opacity: 0.85;
-            filter: drop-shadow(0 0 15px var(--void-purple));
-            animation: lensWarp 8s ease-in-out infinite alternate;
+            filter: blur(12px);
+            animation: energyPulse 4s ease-in-out infinite alternate;
         }
 
-        /* Pure Singularity Shadow Sphere Core */
+        /* Perfectly round, cross-cutting accretion plane without harsh 3D squashing matrix */
+        .accretion-flat-disk {
+            position: absolute;
+            width: 125%; height: 26%;
+            background: radial-gradient(ellipse at center, transparent 25%, var(--void-purple) 45%, var(--deep-violet) 65%, transparent 75%);
+            transform: rotate(-6deg);
+            z-index: 7;
+            opacity: 0.95;
+            filter: blur(4px);
+            mix-blend-mode: screen;
+            animation: diskWobble 6s ease-in-out infinite alternate;
+        }
+
+        /* Perfect Pitch-Black Spherical Event Horizon Shadow Core */
         .shadow-core {
             width: 44%; height: 44%;
             background: var(--void-core);
             border-radius: 50%;
             z-index: 6;
-            transform: translateZ(0px); /* Centered in 3D depth layer */
-            box-shadow: 0 0 40px #000, 0 0 80px rgba(0,0,0,0.9), inset 0 0 50px #000;
+            box-shadow: 0 0 35px #000, 0 0 70px rgba(0, 0, 0, 0.9), inset 0 0 40px #000;
         }
 
-        /* 3D Accretion Disk Ring (Warped multi-layer intersecting plane) */
-        .accretion-flat-disk {
-            position: absolute;
-            width: 130%; height: 35%;
-            background: radial-gradient(ellipse at center, transparent 20%, var(--void-purple) 38%, var(--deep-violet) 58%, transparent 70%);
-            /* Tilts disk directly across the 3D horizon axis */
-            transform: translateZ(20px) rotateX(72deg) rotateZ(-12deg);
-            z-index: 7;
-            opacity: 0.95;
-            mix-blend-mode: screen;
-            animation: diskRotation 12s linear infinite;
-        }
-
-        /* Secondary background disk edge glow to simulate light wrapper encapsulation */
-        .accretion-flat-disk::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(ellipse at center, transparent 25%, rgba(126, 0, 255, 0.4) 40%, transparent 60%);
-            transform: translateZ(-60px);
-            z-index: 3;
-        }
-
-        /* --- VIEWPORT DISPLAY LAYERS --- */
+        /* --- STAGE MANAGEMENT SYSTEM --- */
         .viewport-stage {
             position: absolute;
             top: 0; left: 0;
@@ -139,14 +125,14 @@
             pointer-events: none !important;
         }
 
-        /* --- STAGE 1: SYSTEM INGEST LOADING ROUTINE --- */
+        /* --- STAGE 1: METRIC DEPLOY TIMELINE --- */
         .loading-title {
             font-size: clamp(1.8rem, 5vw, 3rem);
             font-style: italic;
             text-transform: uppercase;
             letter-spacing: 5px;
             margin-bottom: 25px;
-            text-shadow: 0 0 15px rgba(140,0,255,0.5);
+            text-shadow: 0 0 15px rgba(126, 0, 255, 0.5);
         }
 
         .bar-container {
@@ -172,7 +158,7 @@
             letter-spacing: 2px;
         }
 
-        /* --- STAGE 2: ULTRA-TRANSPARENT NAVIGATION HUD --- */
+        /* --- STAGE 2: MAXIMUM TRANSPARENT INTERFACE INTERACTORS --- */
         .system-branding {
             font-size: clamp(2.3rem, 6.5vw, 5.5rem);
             font-style: italic;
@@ -187,7 +173,7 @@
 
         .system-branding .left-half {
             color: #fff;
-            text-shadow: 2px 2px 0px #000, 0 0 20px rgba(140, 0, 255, 0.8);
+            text-shadow: 2px 2px 0px #000, 0 0 20px rgba(126, 0, 255, 0.8);
             padding-right: 4px;
         }
 
@@ -214,7 +200,6 @@
             width: min(90vw, 360px);
         }
 
-        /* Completely transparent interactors */
         .interactive-node {
             background: transparent;
             color: #fff;
@@ -231,7 +216,7 @@
             align-items: center;
             gap: 20px;
             transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), text-shadow 0.2s ease;
-            text-shadow: 0 0 8px rgba(140, 0, 255, 0.3);
+            text-shadow: 0 0 8px rgba(126, 0, 255, 0.3);
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -254,7 +239,7 @@
             transform: scale(1.3);
         }
 
-        /* --- STAGE 3: ABSOLUTE TRANSPARENT MODAL OVERLAY SHEET --- */
+        /* --- STAGE 3: METRIC PANEL SUB-MATRIX OVERLAY --- */
         .multiverse-grid {
             position: absolute;
             width: 100%; height: 100%;
@@ -279,13 +264,13 @@
             animation: targetFloat 12s ease-in-out infinite alternate;
         }
 
-        /* Complete background transparency conversion */
+        /* Maximum Transparency Content Drawer Frame */
         .data-vault-panel {
             width: min(92vw, 740px);
-            background: transparent; /* Full transparency */
+            background: transparent;
             border: 2px solid var(--neon-cyan);
             box-shadow: 0 0 35px rgba(0, 240, 255, 0.25);
-            backdrop-filter: blur(5px); /* Smooth readability separation over objects */
+            backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             padding: clamp(22px, 5vw, 42px);
             border-radius: 4px;
@@ -324,7 +309,7 @@
             font-style: italic;
             text-transform: uppercase;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             align-self: center;
             text-shadow: 0 0 8px var(--void-purple);
             -webkit-tap-highlight-color: transparent;
@@ -337,7 +322,7 @@
             transform: scale(1.05);
         }
 
-        /* --- COLLAPSE VISUAL STATE SETTINGS --- */
+        /* --- COLLAPSE ANIMATION OVERRIDES --- */
         .swallowed-by-singularity {
             animation: none !important;
             transform: translate3d(-50%, -50%, 0) scale(8.5) !important;
@@ -349,22 +334,21 @@
             opacity: 0;
         }
 
-        /* --- HARDWARE-ACCELERATED HIGH-FPS ANIMATIONS --- */
-        /* Dynamic 3D axis drifting, tilting, and rocking rotation pathing */
-        @keyframes spatial3DOrbit {
-            0% { transform: translate3d(-53%, -53%, 20px) rotateX(-4deg) rotateY(6deg); }
-            50% { transform: translate3d(-46%, -47%, -30px) rotateX(4deg) rotateY(-4deg); }
-            100% { transform: translate3d(-48%, -55%, 10px) rotateX(-2deg) rotateY(8deg); }
+        /* --- HARDWARE PERFORMANCE CORE ANIMATIONS --- */
+        @keyframes cinematicDrift {
+            0% { transform: translate3d(-54%, -53%, 0); }
+            50% { transform: translate3d(-46%, -46%, 0); }
+            100% { transform: translate3d(-49%, -54%, 0); }
         }
 
-        @keyframes diskRotation {
-            0% { transform: translateZ(20px) rotateX(74deg) rotateZ(0deg); }
-            100% { transform: translateZ(20px) rotateX(74deg) rotateZ(-360deg); }
+        @keyframes energyPulse {
+            0% { transform: scale(0.98) rotate(0deg); opacity: 0.8; }
+            100% { transform: scale(1.03) rotate(45deg); opacity: 0.9; }
         }
 
-        @keyframes lensWarp {
-            0% { transform: translateZ(-40px) scaleY(0.85) scaleX(1) rotate(-8deg); }
-            100% { transform: translateZ(-40px) scaleY(0.88) scaleX(1.04) rotate(-5deg); }
+        @keyframes diskWobble {
+            0% { transform: rotate(-7deg) scaleY(0.96); }
+            100% { transform: rotate(-4deg) scaleY(1.04); }
         }
 
         @keyframes cosmicDrift {
@@ -384,7 +368,7 @@
         <div class="starfield"></div>
         
         <div class="black-hole-viewport" id="mainBlackHole">
-            <div class="gravitational-lens-vertical"></div>
+            <div class="gravitational-lens-halo"></div>
             <div class="shadow-core"></div>
             <div class="accretion-flat-disk"></div>
         </div>
@@ -434,7 +418,7 @@
     </div>
 
     <script>
-        // Orchestrated Linear Pre-boot Sequence
+        // System Initialization Routine
         window.addEventListener('DOMContentLoaded', () => {
             const bar = document.getElementById('progressBar');
             const txt = document.getElementById('progressText');
@@ -455,7 +439,7 @@
             }, 30);
         });
 
-        // Relativistic Transition Sequence
+        // Relativistic Consumption Effect Sequence
         function swallowSequence(gameId) {
             const bh = document.getElementById('mainBlackHole');
             const menu = document.getElementById('menuStage');
@@ -485,7 +469,7 @@
             }, 600);
         }
 
-        // Return Matrix Logic Loop
+        // Return Matrix Logic Router
         function restoreFromUnknown() {
             const bh = document.getElementById('mainBlackHole');
             const menu = document.getElementById('menuStage');
@@ -506,4 +490,4 @@
     </script>
 </body>
                 </html>
-            
+    
