@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINGULARITY // EVENT HORIZON</title>
+    <title>VOID EVENT HORIZON</title>
     <style>
         :root {
-            --space-black: #020105;
-            --singularity-purple: #12012c;
-            --nebula-glow: #3a0066;
-            --accretion-disk: #7e00ff;
-            --hawking-radiation: #cc00ff;
+            --bg-black: #020005;
+            --void-purple: #1f013d;
+            --neon-magenta: #da00ff;
+            --neon-violet: #6a00ff;
+            --text-glow: #e9ccff;
+            --font-display: 'Impact', 'Arial Black', sans-serif;
         }
 
         * {
@@ -24,36 +25,47 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: var(--space-black);
-            font-family: 'Cinzel', 'Times New Roman', serif;
-            color: #ece6f2;
+            background-color: var(--bg-black);
+            font-family: var(--font-display);
+            color: #fff;
         }
 
-        /* --- THE INFINITE COSMIC VOID BACKGROUND --- */
-        .deep-space {
+        /* --- THE ACTIVE COSMIC BACKGROUND --- */
+        .void-canvas {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, var(--singularity-purple) 0%, var(--space-black) 100%);
+            background: radial-gradient(circle at center, var(--void-purple) 0%, var(--bg-black) 95%);
             z-index: 1;
             overflow: hidden;
         }
 
-        /* Swirling Cosmic Gas Overlays */
-        .nebula-cloud {
+        /* Spikes & Particle Matter Drifting */
+        .void-debris {
             position: absolute;
-            width: 250%;
-            height: 250%;
-            top: -75%; left: -75%;
-            background: radial-gradient(ellipse at center, rgba(126, 0, 255, 0.08) 0%, rgba(58, 0, 102, 0.04) 40%, transparent 70%);
-            filter: blur(60px);
-            animation: diskRotation 45s linear infinite;
+            width: 200%;
+            height: 200%;
+            top: -50%; left: -50%;
+            background-image: 
+                radial-gradient(rgba(218, 0, 255, 0.12) 3px, transparent 3px),
+                radial-gradient(rgba(106, 0, 255, 0.08) 2px, transparent 2px);
+            background-size: 60px 60px, 90px 90px;
+            animation: bypassDrift 20s linear infinite;
             z-index: 2;
+        }
+
+        /* Glitch Horizontal Distortions */
+        .chromatic-static {
+            position: absolute;
+            width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(218, 0, 255, 0.08) 50%);
+            background-size: 100% 8px;
+            z-index: 3;
             pointer-events: none;
         }
 
-        /* --- SCREEN FRAMEWORK --- */
-        .screen {
+        /* --- STAGE ARCHITECTURE --- */
+        .stage {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             display: flex;
@@ -61,257 +73,294 @@
             justify-content: center;
             align-items: center;
             z-index: 10;
-            transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1), transform 2s cubic-bezier(0.25, 1, 0.5, 1), filter 1.8s ease;
+            transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);
         }
 
-        .spaghettified {
+        .collapsed {
             opacity: 0;
             pointer-events: none;
-            transform: scale(0) rotate(720deg); /* Pulled violently into the center */
-            filter: blur(30px);
+            transform: scale(1.5) rotate(-10deg);
+            filter: blur(25px) hue-rotate(45deg);
         }
 
-        /* --- SCREEN 1: THE ACCRETION DISK ENTRANCE --- */
-        #entranceScreen {
-            cursor: pointer;
-        }
-
-        /* Highly distorted black hole visual effect */
-        .black-hole-core {
+        /* --- STAGE 1: SPINNER LOADING SCREEN --- */
+        .loading-vortex {
             position: relative;
-            width: 260px;
-            height: 260px;
-            background: #000000;
+            width: 220px; height: 220px;
+            background: #000;
             border-radius: 50%;
             box-shadow: 
-                0 0 40px 10px #000,
-                inset 0 0 50px rgba(0,0,0,1),
-                0 0 70px 25px var(--accretion-disk),
-                0 0 140px 50px var(--nebula-glow);
-            animation: spaceWarp 8s ease-in-out infinite alternate;
+                0 0 30px #000,
+                0 0 60px 20px var(--neon-violet),
+                0 0 120px 40px var(--neon-magenta);
+            animation: pulseVortex 1s ease-in-out infinite alternate;
             margin-bottom: 50px;
-        }
-
-        /* Einstein Ring / Gravitational Lens Distortion */
-        .black-hole-core::before {
-            content: '';
-            position: absolute;
-            top: -20px; left: -20px; right: -20px; bottom: -20px;
-            border-radius: 50%;
-            border: 1px solid rgba(204, 0, 255, 0.3);
-            box-shadow: 0 0 30px rgba(126, 0, 255, 0.2);
-            animation: diskRotation 15s linear infinite;
-        }
-
-        /* Whispering calling text */
-        .singularity-call {
-            font-size: 1.4rem;
-            font-weight: 300;
-            letter-spacing: 15px;
-            text-transform: uppercase;
-            color: #fff;
-            opacity: 0.6;
-            animation: pulseRadiation 4s ease-in-out infinite;
-            text-align: center;
-        }
-
-        /* --- SCREEN 2: EVENT HORIZON INTERIOR --- */
-        .horizon-manifesto {
-            max-width: 700px;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .horizon-title {
-            font-size: 3.5rem;
-            font-weight: 200;
-            letter-spacing: 10px;
-            text-transform: uppercase;
-            color: #ffffff;
-            margin-bottom: 50px;
-            text-shadow: 0 0 30px var(--hawking-radiation);
-        }
-
-        /* Gravitational anomalies representing website sections */
-        .gravitational-anomalies {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            align-items: center;
         }
 
-        .anomaly-node {
-            background: transparent;
-            border: none;
-            outline: none;
-            font-family: inherit;
-            color: #8c7b9c;
-            font-size: 1.5rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            cursor: pointer;
-            padding: 20px 30px;
-            position: relative;
-            transition: color 0.5s ease, transform 0.5s ease;
-        }
-
-        /* Floating dark orb background for individual links */
-        .anomaly-node::before {
+        /* Circling Accretion Ring */
+        .loading-vortex::before {
             content: '';
             position: absolute;
-            top: 50%; left: 50%;
-            width: 10px; height: 10px;
-            background: var(--accretion-disk);
+            top: -25px; left: -25px; right: -25px; bottom: -25px;
             border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            opacity: 0;
-            filter: blur(10px);
-            transition: all 0.5s ease;
+            border: 4px dotted var(--neon-magenta);
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            animation: rotateOrbit 1.5s linear infinite;
         }
 
-        .anomaly-node:hover {
-            color: #ffffff;
-            transform: translateY(-5px) scale(1.05);
+        .loading-vortex::after {
+            content: '';
+            position: absolute;
+            top: -12px; left: -12px; right: -12px; bottom: -12px;
+            border-radius: 50%;
+            border: 2px dashed var(--neon-violet);
+            animation: rotateOrbit Reverse 3s linear infinite;
         }
 
-        .anomaly-node:hover::before {
-            width: 130%;
-            height: 130%;
-            opacity: 0.15;
-            filter: blur(15px);
-            box-shadow: 0 0 30px var(--hawking-radiation);
-        }
-
-        /* --- SCREEN 3: DEEPEST LAYER CONTENT --- */
-        .collapsed-content {
-            font-size: 1.3rem;
-            line-height: 2.2;
-            letter-spacing: 3px;
-            color: #bfaecf;
-            max-width: 600px;
-            margin-bottom: 60px;
-            text-align: center;
-            animation: internalDrift 6s ease-in-out infinite;
-        }
-
-        .dissolve-btn {
-            background: transparent;
-            border: none;
+        .percent-counter {
+            font-size: 2.5rem;
             color: #fff;
-            font-family: inherit;
-            font-size: 1rem;
-            letter-spacing: 6px;
+            text-shadow: 0 0 15px var(--text-glow);
+            letter-spacing: 2px;
+            z-index: 5;
+        }
+
+        .loading-subtext {
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--neon-magenta);
+            text-shadow: 0 0 10px var(--neon-magenta);
+            animation: flashWarning 0.4s steps(2) infinite;
+        }
+
+        /* --- STAGE 2: HYPER VOID MENU --- */
+        .void-title-banner {
+            font-size: 4.5rem;
+            font-style: italic;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            text-shadow: 5px 5px 0px var(--neon-magenta), -3px -3px 0px var(--neon-violet);
+            margin-bottom: 50px;
+            animation: titlesway 3s ease-in-out infinite alternate;
+        }
+
+        .button-cluster {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 320px;
+        }
+
+        /* Spiked Custom Game Buttons */
+        .void-btn {
+            background: rgba(31, 1, 61, 0.4);
+            color: #fff;
+            border: 3px solid var(--neon-violet);
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-style: italic;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(106,0,255,0.3);
+            transition: all 0.2s ease;
+        }
+
+        /* Left/Right spike highlights on hover */
+        .void-btn::before {
+            content: '◀';
+            position: absolute;
+            left: -30px;
+            color: var(--neon-magenta);
+            transition: left 0.2s ease;
+        }
+        .void-btn::after {
+            content: '▶';
+            position: absolute;
+            right: -30px;
+            color: var(--neon-magenta);
+            transition: right 0.2s ease;
+        }
+
+        .void-btn:hover {
+            color: var(--neon-magenta);
+            border-color: var(--neon-magenta);
+            background: #000;
+            box-shadow: 0 0 25px var(--neon-magenta);
+            transform: scale(1.08) rotate(-1deg);
+        }
+
+        .void-btn:hover::before { left: 15px; }
+        .void-btn:hover::after { right: 15px; }
+
+        /* --- STAGE 3: DATA STREAM INFOPANEL --- */
+        .info-panel {
+            width: 90%;
+            max-width: 750px;
+            background: #040108;
+            border: 4px solid var(--neon-magenta);
+            box-shadow: 0 0 40px var(--neon-violet);
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .info-header {
+            font-size: 3.2rem;
+            font-style: italic;
+            color: #fff;
+            text-shadow: 4px 4px 0px var(--neon-violet);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .info-body {
+            font-family: sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            letter-spacing: 1px;
+            color: #dcbfff;
+            margin-bottom: 40px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-left: 5px solid var(--neon-magenta);
+        }
+
+        .close-panel-btn {
+            background: transparent;
+            border: 2px solid #555;
+            color: #aaa;
+            padding: 10px 25px;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
             text-transform: uppercase;
             cursor: pointer;
-            opacity: 0.4;
-            transition: opacity 0.3s ease, letter-spacing 0.3s ease;
+            transition: all 0.2s ease;
         }
 
-        .dissolve-btn:hover {
-            opacity: 0.9;
-            letter-spacing: 9px;
+        .close-panel-btn:hover {
+            border-color: #fff;
+            color: #fff;
+            box-shadow: 0 0 15px #fff;
         }
 
-        /* --- COSMIC PHYSICS ANIMATIONS --- */
-        @keyframes diskRotation {
+        /* --- PHYSICS LAYER ANIMATIONS --- */
+        @keyframes rotateOrbit {
             100% { transform: rotate(360deg); }
         }
 
-        /* Simulates gravity bending light and shape */
-        @keyframes spaceWarp {
-            0% {
-                transform: scale(1) rotate(0deg);
-                border-radius: 50%;
-            }
-            50% {
-                transform: scale(1.06) rotate(180deg);
-                border-radius: 46% 54% 42% 58% / 50% 44% 56% 50%; /* Dynamic lopsided deformation */
-                box-shadow: 
-                    0 0 50px #000,
-                    0 0 90px 35px var(--accretion-disk),
-                    0 0 180px 70px var(--nebula-glow);
-            }
-            100% {
-                transform: scale(0.97) rotate(360deg);
-                border-radius: 52% 48% 57% 43% / 45% 53% 47% 55%;
-            }
+        @keyframes bypassDrift {
+            0% { background-position: 0 0; }
+            100% { background-position: 120px 120px; }
         }
 
-        @keyframes pulseRadiation {
-            0%, 100% { opacity: 0.3; filter: blur(1px); }
-            50% { opacity: 0.75; filter: blur(0px); }
+        @keyframes pulseVortex {
+            0% { transform: scale(1); box-shadow: 0 0 60px 10px var(--neon-violet), 0 0 100px 30px var(--neon-magenta); }
+            100% { transform: scale(1.06); box-shadow: 0 0 80px 25px var(--neon-violet), 0 0 140px 50px var(--neon-magenta); }
         }
 
-        @keyframes internalDrift {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(0.5deg); }
+        @keyframes flashWarning {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.3; }
+        }
+
+        @keyframes titlesway {
+            0% { transform: rotate(-1deg) scale(1); }
+            100% { transform: rotate(2deg) scale(1.03); }
         }
     </style>
 </head>
 <body>
 
-    <div class="deep-space">
-        <div class="nebula-cloud"></div>
+    <div class="void-canvas">
+        <div class="void-debris"></div>
+        <div class="chromatic-static"></div>
     </div>
 
-    <!-- 1. THE SINGULARITY CORE ENTRANCE -->
-    <div id="entranceScreen" class="screen" onclick="pullToCenter()">
-        <div class="black-hole-core"></div>
-        <div class="singularity-call">Cross the Event Horizon</div>
+    <!-- STAGE 1: INITIAL SYSTEM LOADING SCREEN -->
+    <div id="loadingStage" class="stage">
+        <div class="loading-vortex">
+            <span class="percent-counter" id="loadPercent">0%</span>
+        </div>
+        <div class="loading-subtext">CORE_BREACH_IN_PROGRESS</div>
     </div>
 
-    <!-- 2. THE INTERNAL EVENT HORIZON MENU -->
-    <div id="horizonMenu" class="screen spaghettified">
-        <div class="horizon-manifesto">
-            <h1 class="horizon-title">The Singularity</h1>
-            
-            <div class="gravitational-anomalies">
-                <button class="anomaly-node" onclick="collapseIntoData('void')">The Abyss</button>
-                <button class="anomaly-node" onclick="collapseIntoData('matter')">Crushed Matter</button>
-                <button class="anomaly-node" onclick="collapseIntoData('time')">Time Dilation</button>
-            </div>
+    <!-- STAGE 2: HYPER VOID ACCESS MENU -->
+    <div id="menuStage" class="stage collapsed">
+        <h1 class="void-title-banner">Void Singularity</h1>
+        <div class="button-cluster">
+            <button class="void-btn" onclick="revealModule('codm')">CODM</button>
+            <button class="void-btn" onclick="revealModule('fnf')">FNF</button>
         </div>
     </div>
 
-    <!-- 3. DEEPEST CONTENT LAYER -->
-    <div id="insideContent" class="screen spaghettified">
-        <div class="horizon-manifesto">
-            <p class="collapsed-content" id="manifestText">...</p>
-            <button class="dissolve-btn" onclick="returnToHorizon()">[ Orbit Back ]</button>
+    <!-- STAGE 3: SPECIFIC DATA MODULE DISPLAY -->
+    <div id="infoStage" class="stage collapsed">
+        <div class="info-panel">
+            <h2 id="panelHeader" class="info-header">MODULE DATA</h2>
+            <div id="panelBody" class="info-body">Loading decryption blocks...</div>
+            <button class="close-panel-btn" onclick="hideModule()">[ DISCONNECT ]</button>
         </div>
     </div>
 
     <script>
-        // Transition sequences simulating massive gravity pulls
-        function pullToCenter() {
-            document.getElementById('entranceScreen').classList.add('spaghettified');
-            document.getElementById('horizonMenu').classList.remove('spaghettified');
-        }
+        // Automatic Simulated Count Up Engine
+        window.addEventListener('DOMContentLoaded', () => {
+            const counter = document.getElementById('loadPercent');
+            let currentPercentage = 0;
 
-        function collapseIntoData(dimension) {
-            document.getElementById('horizonMenu').classList.add('spaghettified');
-            const targetScreen = document.getElementById('insideContent');
-            const targetText = document.getElementById('manifestText');
-            
-            targetScreen.classList.remove('spaghettified');
+            const progressInterval = setInterval(() => {
+                currentPercentage += Math.floor(Math.random() * 8) + 2; // Chaotic loading leaps
+                if (currentPercentage >= 100) {
+                    currentPercentage = 100;
+                    clearInterval(progressInterval);
+                    
+                    // Exit Loader -> Drop into Menu
+                    setTimeout(() => {
+                        document.getElementById('loadingStage').classList.add('collapsed');
+                        document.getElementById('menuStage').classList.remove('collapsed');
+                    }, 500);
+                }
+                counter.innerText = currentPercentage + "%";
+            }, 80);
+        });
 
-            if (dimension === 'void') {
-                targetText.innerHTML = "At the geometric center, density reaches infinity. The conventional grid architecture of standard markup is completely shredded. Here lies the absolute core—silent, infinite, and perfectly empty.";
-            } else if (dimension === 'matter') {
-                targetText.innerHTML = "Subatomic systems compressed past their boundaries. Everything that once formed structure has disintegrated into foundational elements, floating aimlessly around a dark mass.";
-            } else {
-                targetText.innerHTML = "Light takes infinite duration to cross coordinates. From an exterior metric, actions stop completely. You are frozen on the inner boundary threshold of a collapsing star.";
+        // Open Individual Profile Nodes
+        function revealModule(gameType) {
+            document.getElementById('menuStage').classList.add('collapsed');
+            document.getElementById('infoStage').classList.remove('collapsed');
+
+            const pHeader = document.getElementById('panelHeader');
+            const pBody = document.getElementById('panelBody');
+
+            if (gameType === 'codm') {
+                pHeader.innerText = "CODM // BLACKOUT CORRUPTION";
+                pBody.innerHTML = "<strong>CRITICAL TELEMETRY RECORDED:</strong><br><br>• Spatial distortion detected across isolated military combat zones.<br>• Weapon tracking architectures experiencing high frequency system noise and void residue contamination.<br>• Kinetic targeting operations parameters are collapsing directly into local gravitational thresholds.";
+            } else if (gameType === 'fnf') {
+                pHeader.innerText = "FNF // CHRONO EXPULSION";
+                pBody.innerHTML = "<strong>SPECTRUM AUDIO OVERRIDE:</strong><br><br>• Vocal tracking vectors intercepted by custom deep space entity matrices.<br>• Directional arrows undergoing spatial breakdown, resulting in heavy localized sync distortions.<br>• Acoustic waveforms show dangerous spikes of dark matter conversion within standard rhythm protocols.";
             }
         }
 
-        function returnToHorizon() {
-            document.getElementById('insideContent').classList.add('spaghettified');
-            document.getElementById('horizonMenu').classList.remove('spaghettified');
+        function hideModule() {
+            document.getElementById('infoStage').classList.add('collapsed');
+            document.getElementById('menuStage').classList.remove('collapsed');
         }
     </script>
 </body>
 </html>
+
 
 
 
