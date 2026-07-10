@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIVIAN(JONASH) // MOVING VOID</title>
+    <title>VIVIAN(JONASH) // 3D DEEP VOID</title>
     <style>
         :root {
             --space-black: #010002;
             --void-core: #000000;
-            --void-purple: rgba(126, 0, 255, 0.85);
-            --deep-violet: rgba(43, 0, 84, 0.6);
+            --void-purple: rgba(140, 0, 255, 0.85);
+            --deep-violet: rgba(43, 0, 84, 0.5);
             --neon-cyan: #00f0ff;
             --font-display: 'Impact', 'Arial Black', sans-serif;
         }
@@ -31,14 +31,15 @@
             color: #fff;
         }
 
-        /* --- HARDWARE-ACCELERATED HIGH-PERFORMANCE BACKDROP --- */
+        /* --- 3D CANVAS & BACKGROUND ENVIRONMENT --- */
         .universe-bg {
             position: absolute;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle at center, #07010f 0%, var(--space-black) 100%);
+            background: radial-gradient(circle at center, #06000d 0%, var(--space-black) 100%);
             z-index: 1;
             overflow: hidden;
+            perspective: 1000px; /* Establishes deep 3D spatial field */
             transform: translateZ(0);
         }
 
@@ -50,67 +51,76 @@
                 radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
                 radial-gradient(rgba(126, 0, 255, 0.04) 2px, transparent 2px);
             background-size: 80px 80px, 160px 160px;
-            animation: cosmicDrift 120s linear infinite;
+            animation: cosmicDrift 140s linear infinite;
             z-index: 2;
             pointer-events: none;
-            transform: translate3d(0,0,0);
         }
 
-        /* --- STABLE REALISTIC PURPLE BLACK HOLE WITH PHYSICAL MOVEMENT --- */
+        /* --- HYPER-REALISTIC 3D MOVING BLACK HOLE --- */
         .black-hole-viewport {
             position: absolute;
             top: 50%; left: 50%;
-            /* Base sizing and stacking context layout */
-            width: 90vmin; height: 90vmin;
-            max-width: 620px; max-height: 620px;
+            width: 85vmin; height: 85vmin;
+            max-width: 600px; max-height: 600px;
             z-index: 3;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 1.2s ease, filter 1.2s ease;
             transform-style: preserve-3d;
             
-            /* Smooth, lag-free floating translation pathing */
-            animation: orbitDrift 20s ease-in-out infinite alternate;
+            /* High-performance multi-axis physical drifting animation */
+            animation: spatial3DOrbit 24s ease-in-out infinite alternate;
             will-change: transform;
+            transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Front-crossing flat accretion disk plane */
-        .accretion-flat-disk {
-            position: absolute;
-            width: 115%; height: 22%;
-            background: radial-gradient(ellipse at center, transparent 25%, var(--void-purple) 45%, var(--deep-violet) 65%, transparent 75%);
-            transform: rotate(-6deg) translateZ(0);
-            z-index: 5;
-            opacity: 0.95;
-            animation: diskChurn 5s ease-in-out infinite alternate;
-        }
-
-        /* Gravity Lensing Arc wrapping top to bottom behind the core shadow */
+        /* Rear Gravitational Light Distortion (Sits behind core) */
         .gravitational-lens-vertical {
             position: absolute;
-            width: 76%; height: 76%;
+            width: 80%; height: 110%;
             border-radius: 50%;
-            border: 30px solid transparent;
-            border-top: 40px solid var(--void-purple);
-            border-bottom: 40px solid var(--deep-violet);
-            transform: scaleY(1.12) rotate(-6deg) translateZ(0);
+            background: radial-gradient(circle at center, transparent 35%, var(--void-purple) 55%, var(--deep-violet) 75%, transparent 90%);
+            transform: translateZ(-40px) scaleY(0.85) rotate(-8deg);
             z-index: 4;
-            opacity: 0.9;
-            box-shadow: inset 0 0 30px rgba(126, 0, 255, 0.3);
-            animation: lensWobble 7s ease-in-out infinite alternate;
+            opacity: 0.85;
+            filter: drop-shadow(0 0 15px var(--void-purple));
+            animation: lensWarp 8s ease-in-out infinite alternate;
         }
 
-        /* Perfect Pitch-Black Spherical Singularity Shadow Core */
+        /* Pure Singularity Shadow Sphere Core */
         .shadow-core {
-            width: 42%; height: 42%;
+            width: 44%; height: 44%;
             background: var(--void-core);
             border-radius: 50%;
             z-index: 6;
-            box-shadow: 0 0 30px #000, inset 0 0 40px #000;
+            transform: translateZ(0px); /* Centered in 3D depth layer */
+            box-shadow: 0 0 40px #000, 0 0 80px rgba(0,0,0,0.9), inset 0 0 50px #000;
         }
 
-        /* --- STAGE CONFIGURATIONS --- */
+        /* 3D Accretion Disk Ring (Warped multi-layer intersecting plane) */
+        .accretion-flat-disk {
+            position: absolute;
+            width: 130%; height: 35%;
+            background: radial-gradient(ellipse at center, transparent 20%, var(--void-purple) 38%, var(--deep-violet) 58%, transparent 70%);
+            /* Tilts disk directly across the 3D horizon axis */
+            transform: translateZ(20px) rotateX(72deg) rotateZ(-12deg);
+            z-index: 7;
+            opacity: 0.95;
+            mix-blend-mode: screen;
+            animation: diskRotation 12s linear infinite;
+        }
+
+        /* Secondary background disk edge glow to simulate light wrapper encapsulation */
+        .accretion-flat-disk::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, transparent 25%, rgba(126, 0, 255, 0.4) 40%, transparent 60%);
+            transform: translateZ(-60px);
+            z-index: 3;
+        }
+
+        /* --- VIEWPORT DISPLAY LAYERS --- */
         .viewport-stage {
             position: absolute;
             top: 0; left: 0;
@@ -129,22 +139,22 @@
             pointer-events: none !important;
         }
 
-        /* --- STAGE 1: LOADING MATRIX --- */
+        /* --- STAGE 1: SYSTEM INGEST LOADING ROUTINE --- */
         .loading-title {
-            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-size: clamp(1.8rem, 5vw, 3rem);
             font-style: italic;
             text-transform: uppercase;
             letter-spacing: 5px;
             margin-bottom: 25px;
-            text-shadow: 0 0 15px rgba(126,0,255,0.6);
+            text-shadow: 0 0 15px rgba(140,0,255,0.5);
         }
 
         .bar-container {
-            width: min(85vw, 400px);
-            height: 8px;
-            background: rgba(0, 0, 0, 0.8);
+            width: min(85vw, 380px);
+            height: 6px;
+            background: rgba(0, 0, 0, 0.9);
             border: 1.5px solid var(--deep-violet);
-            border-radius: 2px;
+            border-radius: 1px;
             overflow: hidden;
         }
 
@@ -157,13 +167,12 @@
 
         .percentage-display {
             font-family: monospace;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-top: 15px;
             letter-spacing: 2px;
-            color: #fff;
         }
 
-        /* --- STAGE 2: TRANSPARENT LABEL BOX & TEXT BUTTONS --- */
+        /* --- STAGE 2: ULTRA-TRANSPARENT NAVIGATION HUD --- */
         .system-branding {
             font-size: clamp(2.3rem, 6.5vw, 5.5rem);
             font-style: italic;
@@ -178,13 +187,13 @@
 
         .system-branding .left-half {
             color: #fff;
-            text-shadow: 3px 3px 0px #000, 0 0 20px rgba(126, 0, 255, 0.8);
+            text-shadow: 2px 2px 0px #000, 0 0 20px rgba(140, 0, 255, 0.8);
             padding-right: 4px;
         }
 
         .system-branding .right-half {
             color: #fff;
-            text-shadow: 3px 3px 0px #000, 0 0 20px var(--neon-cyan);
+            text-shadow: 2px 2px 0px #000, 0 0 20px var(--neon-cyan);
             padding-left: 4px;
         }
 
@@ -205,6 +214,7 @@
             width: min(90vw, 360px);
         }
 
+        /* Completely transparent interactors */
         .interactive-node {
             background: transparent;
             color: #fff;
@@ -220,32 +230,31 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-            text-shadow: 0 0 10px rgba(126, 0, 255, 0.4);
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), text-shadow 0.2s ease;
+            text-shadow: 0 0 8px rgba(140, 0, 255, 0.3);
             -webkit-tap-highlight-color: transparent;
         }
 
         .node-singularity {
-            width: 12px; height: 12px;
+            width: 10px; height: 10px;
             background: #000;
             border-radius: 50%;
             box-shadow: 0 0 10px 3px var(--void-purple), 0 0 18px 5px var(--deep-violet);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            transform: translateZ(0);
         }
 
         .interactive-node:hover {
             color: var(--neon-cyan);
-            text-shadow: 0 0 12px var(--neon-cyan);
-            transform: scale(1.05);
+            text-shadow: 0 0 15px var(--neon-cyan);
+            transform: scale(1.06);
         }
 
         .interactive-node:hover .node-singularity {
             box-shadow: 0 0 12px 5px var(--neon-cyan), 0 0 20px 7px #0077ff;
-            transform: scale(1.25);
+            transform: scale(1.3);
         }
 
-        /* --- STAGE 3: COMPLETELY TRANSPARENT MODAL BOX INTERFACE --- */
+        /* --- STAGE 3: ABSOLUTE TRANSPARENT MODAL OVERLAY SHEET --- */
         .multiverse-grid {
             position: absolute;
             width: 100%; height: 100%;
@@ -268,18 +277,18 @@
             border-radius: 50%;
             box-shadow: 0 0 25px var(--void-purple), 0 0 50px var(--deep-violet);
             animation: targetFloat 12s ease-in-out infinite alternate;
-            transform: translateZ(0);
         }
 
+        /* Complete background transparency conversion */
         .data-vault-panel {
             width: min(92vw, 740px);
-            background: transparent;
+            background: transparent; /* Full transparency */
             border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 35px rgba(0, 240, 255, 0.2);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            padding: clamp(20px, 5vw, 40px);
-            border-radius: 6px;
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.25);
+            backdrop-filter: blur(5px); /* Smooth readability separation over objects */
+            -webkit-backdrop-filter: blur(5px);
+            padding: clamp(22px, 5vw, 42px);
+            border-radius: 4px;
             z-index: 15;
             display: flex;
             flex-direction: column;
@@ -301,7 +310,7 @@
             font-size: clamp(0.95rem, 2.5vw, 1.1rem);
             line-height: 1.6;
             color: #ffffff;
-            text-shadow: 1px 1px 2px #000;
+            text-shadow: 1px 1px 3px #000, 0 0 4px rgba(0,0,0,0.8);
             margin-bottom: 30px;
         }
 
@@ -309,13 +318,13 @@
             background: transparent;
             border: 2px solid var(--void-purple);
             color: #fff;
-            padding: 12px 30px;
+            padding: 12px 32px;
             font-family: var(--font-display);
             font-size: 1.2rem;
             font-style: italic;
             text-transform: uppercase;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
             align-self: center;
             text-shadow: 0 0 8px var(--void-purple);
             -webkit-tap-highlight-color: transparent;
@@ -328,12 +337,11 @@
             transform: scale(1.05);
         }
 
-        /* --- CINEMATIC TRANSITIONS --- */
-        /* JavaScript overrides the regular translation logic by dropping inline adjustments */
+        /* --- COLLAPSE VISUAL STATE SETTINGS --- */
         .swallowed-by-singularity {
             animation: none !important;
-            transform: translate3d(-50%, -50%, 0) scale(7.5) !important;
-            opacity: 0.05;
+            transform: translate3d(-50%, -50%, 0) scale(8.5) !important;
+            opacity: 0;
         }
 
         .menu-spaghettify {
@@ -341,27 +349,27 @@
             opacity: 0;
         }
 
-        /* --- HARDWARE-OPTIMIZED ANIMATIONS --- */
-        /* Smooth continuous floating displacement paths across the spatial viewport */
-        @keyframes orbitDrift {
-            0% { transform: translate3d(-54%, -52%, 0) scale(0.98); }
-            50% { transform: translate3d(-47%, -46%, 0) scale(1.02); }
-            100% { transform: translate3d(-48%, -54%, 0) scale(1); }
+        /* --- HARDWARE-ACCELERATED HIGH-FPS ANIMATIONS --- */
+        /* Dynamic 3D axis drifting, tilting, and rocking rotation pathing */
+        @keyframes spatial3DOrbit {
+            0% { transform: translate3d(-53%, -53%, 20px) rotateX(-4deg) rotateY(6deg); }
+            50% { transform: translate3d(-46%, -47%, -30px) rotateX(4deg) rotateY(-4deg); }
+            100% { transform: translate3d(-48%, -55%, 10px) rotateX(-2deg) rotateY(8deg); }
+        }
+
+        @keyframes diskRotation {
+            0% { transform: translateZ(20px) rotateX(74deg) rotateZ(0deg); }
+            100% { transform: translateZ(20px) rotateX(74deg) rotateZ(-360deg); }
+        }
+
+        @keyframes lensWarp {
+            0% { transform: translateZ(-40px) scaleY(0.85) scaleX(1) rotate(-8deg); }
+            100% { transform: translateZ(-40px) scaleY(0.88) scaleX(1.04) rotate(-5deg); }
         }
 
         @keyframes cosmicDrift {
             0% { transform: translate3d(0,0,0); }
             100% { transform: translate3d(-40px, -40px, 0); }
-        }
-
-        @keyframes diskChurn {
-            0% { transform: rotate(-6deg) scaleY(1); }
-            100% { transform: rotate(-4deg) scaleY(1.05); }
-        }
-
-        @keyframes lensWobble {
-            0% { transform: scaleY(1.12) rotate(-6deg); }
-            100% { transform: scaleY(1.16) rotate(-4deg); }
         }
 
         @keyframes targetFloat {
@@ -377,8 +385,8 @@
         
         <div class="black-hole-viewport" id="mainBlackHole">
             <div class="gravitational-lens-vertical"></div>
-            <div class="accretion-flat-disk"></div>
             <div class="shadow-core"></div>
+            <div class="accretion-flat-disk"></div>
         </div>
 
         <div class="multiverse-grid" id="multiverseField">
@@ -426,7 +434,7 @@
     </div>
 
     <script>
-        // Loading Tracking Routine
+        // Orchestrated Linear Pre-boot Sequence
         window.addEventListener('DOMContentLoaded', () => {
             const bar = document.getElementById('progressBar');
             const txt = document.getElementById('progressText');
@@ -447,7 +455,7 @@
             }, 30);
         });
 
-        // Cinematic Swallow / Multiverse Shift Sequence
+        // Relativistic Transition Sequence
         function swallowSequence(gameId) {
             const bh = document.getElementById('mainBlackHole');
             const menu = document.getElementById('menuStage');
@@ -477,7 +485,7 @@
             }, 600);
         }
 
-        // Return Matrix Sequence
+        // Return Matrix Logic Loop
         function restoreFromUnknown() {
             const bh = document.getElementById('mainBlackHole');
             const menu = document.getElementById('menuStage');
@@ -497,5 +505,5 @@
         }
     </script>
 </body>
-    </html>
-        
+                </html>
+            
