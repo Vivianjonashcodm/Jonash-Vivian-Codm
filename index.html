@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🕳️</title>
+    <title>VS VOID // THE RE-IGNITION</title>
     <style>
         :root {
-            --abyss: #010103;
-            --distortion: rgba(160, 0, 255, 0.15);
-            --decay: #504060;
+            --void-black: #030108;
+            --void-neon: #00ffff;
+            --void-magenta: #ff0055;
+            --void-purple: #7a00ff;
+            --font-fnf: 'Impact', 'Arial Black', sans-serif;
         }
 
         * {
@@ -22,34 +24,47 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: var(--abyss);
-            font-family: 'Georgia', serif; /* Less technical, more atmospheric */
-            color: #d1cbd6;
+            background-color: var(--void-black);
+            font-family: var(--font-fnf);
+            color: #fff;
         }
 
-        /* --- THE CONSTANT ABYSS BACKGROUND --- */
-        .void-universe {
+        /* --- COSMIC FNF VOID BACKGROUND --- */
+        .void-space {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, #090514 0%, var(--abyss) 100%);
+            background: radial-gradient(circle, #18003c 0%, var(--void-black) 90%);
             z-index: 1;
+            overflow: hidden;
         }
 
-        /* Swirling visual distortions */
-        .nebula-distortion {
+        /* Floating Cosmic Debris / Floating FNF Arrows spikes in the background */
+        .void-spikes {
             position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%; left: -50%;
-            background: radial-gradient(ellipse at center, var(--distortion) 0%, transparent 60%);
-            filter: blur(40px);
-            animation: cosmicSwirl 25s linear infinite;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(rgba(0, 255, 255, 0.15) 2px, transparent 2px),
+                radial-gradient(rgba(255, 0, 85, 0.15) 3px, transparent 3px);
+            background-size: 80px 80px, 120px 120px;
             z-index: 2;
-            pointer-events: none;
+            animation: cosmicFloat 12s linear infinite;
         }
 
-        /* --- SCREENS --- */
+        /* Chromatic Aberration / Glitch Effect Lines */
+        .glitch-static {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 50%, rgba(122, 0, 255, 0.15) 50%);
+            background-size: 100% 6px;
+            z-index: 3;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* --- SCREEN MANAGEMENT --- */
         .screen {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -57,194 +72,292 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 5;
-            transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), filter 1.5s ease;
+            z-index: 10;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .shrouded {
+        .shattered {
             opacity: 0;
             pointer-events: none;
-            filter: blur(20px);
+            transform: scale(1.3) rotate(5deg);
+            filter: hue-rotate(90deg) blur(10px);
         }
 
-        /* --- THE TRUE VOID ENTRANCE --- */
+        /* --- SCREEN 1: THE COSMIC ENTRANCE --- */
         #entranceScreen {
             cursor: pointer;
         }
 
-        /* An unsettling, warping singularity core */
-        .anomaly-core {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            background: #000;
-            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; /* Organic distortion */
-            box-shadow: 
-                0 0 40px #000,
-                inset 0 0 20px rgba(0,0,0,1),
-                0 0 50px 10px rgba(70, 0, 130, 0.4);
-            animation: warpCore 6s ease-in-out infinite alternate;
-            margin-bottom: 60px;
+        /* A massive cosmic entity eye / FNF speaker hybrid vortex */
+        .void-vortex {
+            width: 200px;
+            height: 200px;
+            background: repeating-radial-gradient(var(--void-black), var(--void-purple) 20px, var(--void-neon) 40px);
+            border-radius: 50%;
+            box-shadow: 0 0 50px var(--void-purple), inset 0 0 30px var(--void-magenta);
+            animation: fnfBeatBump 0.5s ease-in-out infinite alternate, vortexSpin 4s linear infinite;
+            margin-bottom: 40px;
         }
 
-        /* Whispering text */
-        .void-whisper {
-            font-size: 2.2rem;
+        .cosmic-logo {
+            font-size: 5.5rem;
             font-style: italic;
-            letter-spacing: 12px;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 0.85;
+            letter-spacing: -2px;
             color: #fff;
-            opacity: 0.8;
-            text-shadow: 0 0 15px rgba(255,255,255,0.2);
-            animation: fadeWhisper 4s ease-in-out infinite;
-            text-align: center;
+            text-shadow: 6px 6px 0px var(--void-magenta), -4px -4px 0px var(--void-neon);
+            animation: fnfBeatBump 0.5s ease-in-out infinite alternate-reverse;
+            margin-bottom: 40px;
         }
 
-        /* --- THE INSIDE OF THE WEBSITE --- */
-        .abyssal-gate {
-            max-width: 650px;
-            text-align: center;
-            padding: 20px;
+        .press-enter-flash {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 3px 3px 0px #000;
+            animation: textFlash 0.6s steps(2) infinite;
         }
 
-        .manifest-title {
+        /* --- SCREEN 2: FNF VOID MAIN MENU --- */
+        .menu-title {
             font-size: 3.5rem;
-            font-weight: 300;
-            letter-spacing: 6px;
-            color: #fff;
-            margin-bottom: 30px;
-            text-shadow: 0 0 25px rgba(147, 112, 219, 0.3);
+            font-style: italic;
+            color: var(--void-neon);
+            text-shadow: 4px 4px 0px var(--void-magenta);
+            margin-bottom: 50px;
+            animation: fnfBeatBump 0.5s ease-in-out infinite alternate;
         }
 
-        /* Floating chunks of the website floating in space */
-        .abyss-fragments {
+        .menu-cluster {
             display: flex;
             flex-direction: column;
-            gap: 40px;
-            margin-top: 50px;
+            gap: 20px;
+            width: 340px;
         }
 
-        .fragment {
+        .menu-node {
             background: transparent;
             border: none;
+            font-family: var(--font-fnf);
+            font-size: 3rem;
+            font-style: italic;
+            color: #4c3f63;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.1s ease;
+            text-shadow: 3px 3px 0px #000;
             outline: none;
-            font-family: inherit;
-            color: var(--decay);
+        }
+
+        /* The signature bouncy FNF selected item animation */
+        .menu-node.selected, .menu-node:hover {
+            color: #fff;
+            transform: scale(1.2) rotate(-3deg);
+            text-shadow: 5px 5px 0px var(--void-magenta), -3px -3px 0px var(--void-neon);
+        }
+
+        /* --- SCREEN 3: INSIDE THE SITE (STAGES/SONGS) --- */
+        .inside-panel {
+            width: 85%;
+            max-width: 900px;
+            background: rgba(10, 2, 20, 0.85);
+            border: 4px solid var(--void-neon);
+            box-shadow: 0 0 30px var(--void-purple), inset 0 0 20px rgba(0,255,255,0.2);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transform: rotate(1deg);
+        }
+
+        .panel-header {
+            font-size: 3rem;
+            font-style: italic;
+            color: #fff;
+            text-shadow: 4px 4px 0px var(--void-magenta);
+            margin-bottom: 35px;
+        }
+
+        .song-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .song-track {
+            background: rgba(255, 0, 85, 0.1);
+            border: 2px solid var(--void-magenta);
+            padding: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .song-track:hover {
+            background: var(--void-neon);
+            color: #000;
+            border-color: #fff;
+            transform: scale(1.03) rotate(-1deg);
+        }
+
+        .back-node {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-family: var(--font-fnf);
             font-size: 1.8rem;
             font-style: italic;
             cursor: pointer;
-            transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
+            text-shadow: 2px 2px 0px #000;
         }
 
-        .fragment:hover {
-            color: #fff;
-            transform: scale(1.05) translateY(-2px);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(147, 112, 219, 0.5);
+        .back-node:hover {
+            color: var(--void-magenta);
+            transform: scale(1.1);
         }
 
-        /* Deep Interior content text */
-        .echo-manifesto {
-            font-size: 1.1rem;
-            line-height: 2;
-            letter-spacing: 2px;
-            color: #a49ba9;
-            max-width: 500px;
-            margin: 0 auto 50px auto;
-            animation: floatWhisper 6s ease-in-out infinite;
+        /* --- FNF PSYCH ENGINE ANIMATIONS --- */
+        @keyframes cosmicFloat {
+            0% { background-position: 0 0; }
+            100% { background-position: 120px 120px; }
         }
 
-        /* --- ANIMATIONS --- */
-        @keyframes cosmicSwirl {
-            0% { transform: rotate(0deg); }
+        @keyframes vortexSpin {
             100% { transform: rotate(360deg); }
         }
 
-        @keyframes warpCore {
-            0% {
-                transform: scale(1) rotate(0deg);
-                border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-            }
-            50% {
-                transform: scale(1.15) rotate(180deg);
-                border-radius: 40% 60% 35% 65% / 40% 65% 35% 60%;
-                box-shadow: 0 0 70px 20px rgba(90, 0, 180, 0.5);
-            }
-            100% {
-                transform: scale(0.95) rotate(360deg);
-                border-radius: 50% 50% 60% 40% / 55% 35% 65% 45%;
-            }
+        /* Mimics character bumping on the beat drop */
+        @keyframes fnfBeatBump {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08) translateY(-5px); }
         }
 
-        @keyframes fadeWhisper {
-            0%, 100% { opacity: 0.3; filter: blur(1px); }
-            50% { opacity: 0.8; filter: blur(0px); }
-        }
-
-        @keyframes floatWhisper {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        @keyframes textFlash {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="void-universe"></div>
-    <div class="nebula-distortion"></div>
-
-    <!-- 1. ENTRANCE SCREEN (THE SINGULARITY ANOMALY) -->
-    <div id="entranceScreen" class="screen" onclick="descend()">
-        <div class="anomaly-core"></div>
-        <div class="void-whisper">sink into the nothingness</div>
+    <div class="void-space">
+        <div class="void-spikes"></div>
+        <div class="glitch-static"></div>
     </div>
 
-    <!-- 2. THE INSIDE (MAIN INTERIOR GATE) -->
-    <div id="interiorMenu" class="screen shrouded">
-        <div class="abyssal-gate">
-            <h1 class="manifest-title">The Deep</h1>
-            
-            <div class="abyss-fragments">
-                <button class="fragment" onclick="manifestEcho('abyss')">Echos of Nada</button>
-                <button class="fragment" onclick="manifestEcho('horizon')">Event Horizon</button>
-                <button class="fragment" onclick="manifestEcho('oblivion')">Total Oblivion</button>
-            </div>
+    <!-- 1. ENTRANCE SCREEN (FNF LOGO BUMPING TO THE BEAT) -->
+    <div id="entranceScreen" class="screen" onclick="triggerBreach()">
+        <div class="void-vortex"></div>
+        <h1 class="cosmic-logo">VS VOID<br><span style="color: var(--void-neon)">ENTER</span></h1>
+        <div class="press-enter-flash">PRESS ENTER OR CLICK TO SINGULARITY</div>
+    </div>
+
+    <!-- 2. MAIN MENU SCREEN -->
+    <div id="mainMenuScreen" class="screen shattered">
+        <h2 class="menu-title">// CHOOSE TRACK //</h2>
+        <div class="menu-cluster">
+            <button class="menu-node selected" onclick="enterInside('cosmic')">Cosmic Week</button>
+            <button class="menu-node" onclick="enterInside('freeplay')">Freeplay</button>
+            <button class="menu-node" onclick="enterInside('settings')">Calibrate</button>
         </div>
     </div>
 
-    <!-- 3. DEEPER INSIDE INSIDE THE WEBSITE CONTENT PAGES -->
-    <div id="contentManifest" class="screen shrouded">
-        <div class="abyssal-gate">
-            <p class="echo-manifesto" id="echoText">...</p>
-            <button class="fragment" style="font-size: 1.1rem; color: #fff;" onclick="ascendToGate()">[ Dissolve Back ]</button>
+    <!-- 3. THE INSIDE OF THE SITE -->
+    <div id="insideScreen" class="screen shattered">
+        <div class="inside-panel">
+            <h2 id="panelTitle" class="panel-header">COSMIC TRACKS</h2>
+            
+            <div class="song-list">
+                <div class="song-track">
+                    <span>1. STARCONIC</span>
+                    <span style="font-size: 1rem; color: var(--void-neon);">HARD</span>
+                </div>
+                <div class="song-track">
+                    <span>2. INTERSTELLAR</span>
+                    <span style="font-size: 1rem; color: var(--void-neon);">HARD</span>
+                </div>
+                <div class="song-track">
+                    <span>3. GRAVITY DRIFT</span>
+                    <span style="font-size: 1rem; color: var(--void-magenta);">EXPERT</span>
+                </div>
+            </div>
+
+            <button class="back-node" onclick="escapeToMenu()">[ ESC ] GO BACK</button>
         </div>
     </div>
 
     <script>
-        // Smooth scene sequence controller
-        function descend() {
-            document.getElementById('entranceScreen').classList.add('shrouded');
-            document.getElementById('interiorMenu').classList.remove('shrouded');
+        let currentView = 'entrance';
+        let navIndex = 0;
+        const choices = document.querySelectorAll('.menu-node');
+
+        // Transition from Entrance to Main Menu
+        function triggerBreach() {
+            if (currentView !== 'entrance') return;
+            document.getElementById('entranceScreen').classList.add('shattered');
+            document.getElementById('mainMenuScreen').classList.remove('shattered');
+            currentView = 'menu';
         }
 
-        function manifestEcho(type) {
-            document.getElementById('interiorMenu').classList.add('shrouded');
-            const target = document.getElementById('contentManifest');
-            const textElement = document.getElementById('echoText');
-            
-            target.classList.remove('shrouded');
+        // Navigate "Inside" the website sections
+        function enterInside(type) {
+            document.getElementById('mainMenuScreen').classList.add('shattered');
+            document.getElementById('insideScreen').classList.remove('shattered');
+            currentView = 'inside';
 
-            if (type === 'abyss') {
-                textElement.innerHTML = "“There is no time here. Matter breaks down. The memory of light ceases to exist. You have bypassed existence itself, stumbling upon a dead vacuum where structural websites mean nothing.”";
-            } else if (type === 'horizon') {
-                textElement.innerHTML = "“Everything pulled down to this depth stays here forever. Light loops eternally around the center gravity point. Your awareness is drifting into a quiet, infinite stretching of coordinates.”";
+            const pTitle = document.getElementById('panelTitle');
+            if (type === 'cosmic') {
+                pTitle.innerText = "COSMIC STAGE SELECTION";
+            } else if (type === 'freeplay') {
+                pTitle.innerText = "FREEPLAY SOUNDTRACKS";
             } else {
-                textElement.innerHTML = "“Silence. Pure emptiness. The structural framework has completely faded out. You are viewing a localized collapse.”";
+                pTitle.innerText = "VISUAL METRICS SETTINGS";
             }
         }
 
-        function ascendToGate() {
-            document.getElementById('contentManifest').classList.add('shrouded');
-            document.getElementById('interiorMenu').classList.remove('shrouded');
+        function escapeToMenu() {
+            document.getElementById('insideScreen').classList.add('shattered');
+            document.getElementById('mainMenuScreen').classList.remove('shattered');
+            currentView = 'menu';
         }
+
+        // FNF Rhythm Engine Inputs (Keyboard Navigation)
+        document.addEventListener('keydown', (e) => {
+            if (currentView === 'entrance') {
+                if (e.key === 'Enter' || e.key === ' ') triggerBreach();
+            } 
+            else if (currentView === 'menu') {
+                if (e.key === 'ArrowDown' || e.key === 's') shiftSelection(1);
+                else if (e.key === 'ArrowUp' || e.key === 'w') shiftSelection(-1);
+                else if (e.key === 'Enter') choices[navIndex].click();
+            } 
+            else if (currentView === 'inside') {
+                if (e.key === 'Escape') escapeToMenu();
+            }
+        });
+
+        function shiftSelection(amount) {
+            choices[navIndex].classList.remove('selected');
+            navIndex = (navIndex + amount + choices.length) % choices.length;
+            choices[navIndex].classList.add('selected');
+        }
+
+        // Mouse hover sync
+        choices.forEach((element, i) => {
+            element.addEventListener('mouseenter', () => {
+                choices[navIndex].classList.remove('selected');
+                navIndex = i;
+                element.classList.add('selected');
+            });
+        });
     </script>
 </body>
 </html>
+
 
