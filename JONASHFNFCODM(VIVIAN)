@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRIDAY NIGHT FUNKIN' // THE VOID</title>
+    <style>
+        /* Base Reset & Void Theme Variables */
+        :root {
+            --void-black: #05050a;
+            --void-purple: #1a0033;
+            --void-neon: #00ffff;
+            --void-magenta: #ff0055;
+            --font-main: 'Impact', 'Arial Black', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--void-black);
+            font-family: var(--font-main);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Ambient Void Background */
+        .void-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--void-purple) 0%, var(--void-black) 80%);
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Abstract Floating Void Particles */
+        .void-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+                radial-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px, 30px 30px;
+            animation: floatBackground 20s linear infinite;
+        }
+
+        /* CRT Scanline Overlay for Retro Game Feel */
+        .crt-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 6px 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Main Menu Container */
+        .game-container {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            height: 100%;
+            padding: 20px;
+        }
+
+        /* FNF-Style Pulsing Title */
+        .fnf-title {
+            font-size: 5rem;
+            text-transform: uppercase;
+            font-style: italic;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 
+                3px 3px 0px var(--void-magenta),
+                -3px -3px 0px var(--void-neon);
+            animation: fnfBump 0.5s ease-in-out infinite alternate;
+            margin-bottom: 50px;
+        }
+
+        /* Menu Options Wrapper */
+        .menu-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+        }
+
+        /* FNF Styling for Menu Buttons */
+        .menu-item {
+            background: transparent;
+            border: none;
+            color: #888;
+            font-family: var(--font-main);
+            font-size: 2.5rem;
+            font-style: italic;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.1s ease, color 0.2s ease;
+            text-shadow: 2px 2px 0px #000;
+            outline: none;
+        }
+
+        /* Selected State (Simulating FNF Arrow Selection) */
+        .menu-item.selected, .menu-item:hover {
+            color: var(--void-neon);
+            transform: scale(1.15) rotate(-2deg);
+            text-shadow: 
+                3px 3px 0px var(--void-magenta),
+                -2px -2px 0px #000;
+        }
+
+        .menu-item:active {
+            transform: scale(0.95);
+        }
+
+        /* Footer Info */
+        .footer-text {
+            position: absolute;
+            bottom: 20px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #444;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        @keyframes floatBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Mimics the FNF Bumping to the beat */
+        @keyframes fnfBump {
+            0% {
+                transform: scale(1) rotate(-1deg);
+            }
+            100% {
+                transform: scale(1.06) rotate(1deg);
+                text-shadow: 
+                    5px 5px 0px var(--void-magenta),
+                    -5px -5px 0px var(--void-neon);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="void-bg"></div>
+    <div class="crt-overlay"></div>
+
+    <div class="game-container">
+        <h1 class="fnf-title">FRIDAY NIGHT<br>FUNKIN'<br><span style="color: #00ffff;">V O I D</span></h1>
+
+        <div class="menu-options" id="menuOptions">
+            <button class="menu-item selected" onclick="selectOption('story')">Story Mode</button>
+            <button class="menu-item" onclick="selectOption('freeplay')">Freeplay</button>
+            <button class="menu-item" onclick="selectOption('options')">Options</button>
+        </div>
+
+        <div class="footer-text">PRESS UP/DOWN OR HOVER TO NAVIGATE</div>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('.menu-item');
+        let currentIndex = 0;
+
+        // Keyboard support (Up / Down arrows & Enter)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 's') {
+                changeSelection(1);
+            } else if (e.key === 'ArrowUp' || e.key === 'w') {
+                changeSelection(-1);
+            } else if (e.key === 'Enter') {
+                items[currentIndex].click();
+            }
+        });
+
+        // Mouse hover synchronization
+        items.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => {
+                items[currentIndex].classList.remove('selected');
+                currentIndex = index;
+                item.classList.add('selected');
+            });
+        });
+
+        function changeSelection(direction) {
+            items[currentIndex].classList.remove('selected');
+            currentIndex = (currentIndex + direction + items.length) % items.length;
+            items[currentIndex].classList.add('selected');
+            
+            // Optional: You could add a quick SFX beep trigger here!
+        }
+
+        function selectOption(menu) {
+            // Triggered when clicking or pressing Enter
+            alert(`Entering the Void: ${menu.toUpperCase()}`);
+        }
+    </script>
+</body>
+</html>
+
