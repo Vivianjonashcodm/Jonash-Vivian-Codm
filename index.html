@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRIDAY NIGHT FUNKIN' // THE VOID</title>
     <style>
-        /* Base Reset & Void Theme Variables */
         :root {
-            --void-black: #05050a;
-            --void-purple: #1a0033;
+            --void-black: #020205;
+            --void-purple: #120024;
             --void-neon: #00ffff;
             --void-magenta: #ff0055;
             --font-main: 'Impact', 'Arial Black', sans-serif;
@@ -28,200 +27,354 @@
             background-color: var(--void-black);
             font-family: var(--font-main);
             color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        /* Ambient Void Background */
+        /* --- BACKGROUND EFFECTS --- */
         .void-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, var(--void-purple) 0%, var(--void-black) 80%);
+            background: radial-gradient(circle, var(--void-purple) 0%, var(--void-black) 85%);
             z-index: 1;
-            overflow: hidden;
         }
 
-        /* Abstract Floating Void Particles */
-        .void-bg::before {
-            content: '';
+        /* Glitching Grid lines */
+        .void-grid {
             position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
+            width: 100%;
+            height: 100%;
             background-image: 
-                radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px),
-                radial-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px, 30px 30px;
-            animation: floatBackground 20s linear infinite;
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 85, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 2;
+            animation: gridScroll 8s linear infinite;
         }
 
-        /* CRT Scanline Overlay for Retro Game Feel */
         .crt-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 6px 100%;
-            z-index: 10;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
+            background-size: 100% 4px;
+            z-index: 20;
             pointer-events: none;
+            opacity: 0.6;
         }
 
-        /* Main Menu Container */
-        .game-container {
-            position: relative;
-            z-index: 5;
-            text-align: center;
+        /* --- SCREEN MANAGEMENT --- */
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            width: 100%;
-            max-width: 800px;
-            height: 100%;
-            padding: 20px;
+            align-items: center;
+            z-index: 5;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        /* FNF-Style Pulsing Title */
-        .fnf-title {
-            font-size: 5rem;
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.95);
+        }
+
+        /* --- SCREEN 1: THE ENTRANCE (SPLASH) --- */
+        #entranceScreen {
+            cursor: pointer;
+        }
+
+        .intro-text-box {
+            text-align: center;
+            animation: glitchFloat 4s ease-in-out infinite;
+        }
+
+        .gf-shadow {
+            font-size: 1.5rem;
+            color: var(--void-neon);
+            letter-spacing: 4px;
             text-transform: uppercase;
-            font-style: italic;
-            letter-spacing: 2px;
-            color: #fff;
-            text-shadow: 
-                3px 3px 0px var(--void-magenta),
-                -3px -3px 0px var(--void-neon);
-            animation: fnfBump 0.5s ease-in-out infinite alternate;
-            margin-bottom: 50px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px var(--void-neon);
         }
 
-        /* Menu Options Wrapper */
+        .big-logo {
+            font-size: 6rem;
+            line-height: 0.9;
+            font-style: italic;
+            text-transform: uppercase;
+            text-shadow: 5px 5px 0px var(--void-magenta), -3px -3px 0px var(--void-neon);
+            margin-bottom: 40px;
+        }
+
+        .press-start {
+            font-size: 2rem;
+            color: #fff;
+            letter-spacing: 2px;
+            animation: flashText 0.6s steps(2) infinite;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        /* --- SCREEN 2: MAIN MENU --- */
+        .fnf-title-mini {
+            font-size: 3.5rem;
+            font-style: italic;
+            text-shadow: 3px 3px 0px var(--void-magenta);
+            margin-bottom: 40px;
+        }
+
         .menu-options {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            width: 300px;
+            gap: 20px;
+            width: 320px;
         }
 
-        /* FNF Styling for Menu Buttons */
         .menu-item {
             background: transparent;
             border: none;
-            color: #888;
+            color: #555566;
             font-family: var(--font-main);
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-style: italic;
             text-transform: uppercase;
             cursor: pointer;
+            text-align: center;
             transition: transform 0.1s ease, color 0.2s ease;
             text-shadow: 2px 2px 0px #000;
             outline: none;
         }
 
-        /* Selected State (Simulating FNF Arrow Selection) */
         .menu-item.selected, .menu-item:hover {
+            color: #fff;
+            transform: scale(1.15) rotate(-3deg);
+            text-shadow: 4px 4px 0px var(--void-magenta), -3px -3px 0px var(--void-neon);
+        }
+
+        /* --- SCREEN 3: THE ACTUAL INSIDE (CONTENT) --- */
+        .content-wrapper {
+            width: 85%;
+            max-width: 900px;
+            background: rgba(5, 5, 15, 0.85);
+            border: 3px solid var(--void-magenta);
+            box-shadow: 0 0 20px var(--void-magenta);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .content-title {
+            font-size: 3rem;
             color: var(--void-neon);
-            transform: scale(1.15) rotate(-2deg);
-            text-shadow: 
-                3px 3px 0px var(--void-magenta),
-                -2px -2px 0px #000;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed var(--void-neon);
+            padding-bottom: 10px;
         }
 
-        .menu-item:active {
-            transform: scale(0.95);
+        .stage-select-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        /* Footer Info */
-        .footer-text {
-            position: absolute;
-            bottom: 20px;
-            font-family: monospace;
-            font-size: 0.9rem;
-            color: #444;
-            letter-spacing: 1px;
+        .stage-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #333;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        /* Animations */
-        @keyframes floatBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        .stage-card:hover {
+            border-color: var(--void-magenta);
+            background: rgba(255, 0, 85, 0.1);
+            transform: translateY(-5px);
         }
 
-        /* Mimics the FNF Bumping to the beat */
-        @keyframes fnfBump {
-            0% {
-                transform: scale(1) rotate(-1deg);
-            }
-            100% {
-                transform: scale(1.06) rotate(1deg);
-                text-shadow: 
-                    5px 5px 0px var(--void-magenta),
-                    -5px -5px 0px var(--void-neon);
-            }
+        .back-btn {
+            margin-top: 35px;
+            background: var(--void-neon);
+            color: #000;
+            border: none;
+            padding: 10px 25px;
+            font-family: var(--font-main);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px #fff;
+        }
+
+        .back-btn:hover {
+            background: #fff;
+            box-shadow: 3px 3px 0px var(--void-neon);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes gridScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        @keyframes glitchFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+        }
+
+        @keyframes flashText {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Environment Background Layers -->
     <div class="void-bg"></div>
+    <div class="void-grid"></div>
     <div class="crt-overlay"></div>
 
-    <div class="game-container">
-        <h1 class="fnf-title">FRIDAY NIGHT<br>FUNKIN'<br><span style="color: #00ffff;">V O I D</span></h1>
-
-        <div class="menu-options" id="menuOptions">
-            <button class="menu-item selected" onclick="selectOption('story')">Story Mode</button>
-            <button class="menu-item" onclick="selectOption('freeplay')">Freeplay</button>
-            <button class="menu-item" onclick="selectOption('options')">Options</button>
+    <!-- 1. COOL ENTRANCE SPLASH SCREEN -->
+    <div id="entranceScreen" class="screen" onclick="enterGame()">
+        <div class="intro-text-box">
+            <div class="gf-shadow">SYSTEM_ERROR // LOST IN</div>
+            <h1 class="big-logo">THE VOID</h1>
+            <div class="press-start">PRESS ENTER OR CLICK TO START</div>
         </div>
+    </div>
 
-        <div class="footer-text">PRESS UP/DOWN OR HOVER TO NAVIGATE</div>
+    <!-- 2. MAIN MENU SCREEN (Hidden initially) -->
+    <div id="mainMenuScreen" class="screen hidden">
+        <h2 class="fnf-title-mini">MAIN MENU</h2>
+        <div class="menu-options" id="menuOptions">
+            <button class="menu-item selected" onclick="openContent('story')">Story Mode</button>
+            <button class="menu-item" onclick="openContent('freeplay')">Freeplay</button>
+            <button class="menu-item" onclick="openContent('options')">Options</button>
+        </div>
+    </div>
+
+    <!-- 3. THE "INSIDE" OF THE WEBSITE SCREEN (Hidden initially) -->
+    <div id="contentScreen" class="screen hidden">
+        <div class="content-wrapper">
+            <h2 id="contentTitle" class="content-title">STORY MODE</h2>
+            <p id="contentDesc" style="font-family: monospace; color: #aaa;">Select an anomaly terminal to begin sequence decryption.</p>
+            
+            <!-- Dynamic interior elements -->
+            <div class="stage-select-grid" id="stageGrid">
+                <div class="stage-card">
+                    <h3>WEEK V1</h3>
+                    <p style="color:var(--void-magenta); font-size:0.8rem; margin-top:5px;">STABILIZING</p>
+                </div>
+                <div class="stage-card">
+                    <h3>WEEK V2</h3>
+                    <p style="color:var(--void-neon); font-size:0.8rem; margin-top:5px;">CORRUPTED</p>
+                </div>
+                <div class="stage-card">
+                    <h3>ECLIPSE</h3>
+                    <p style="color:#666; font-size:0.8rem; margin-top:5px;">LOCKED</p>
+                </div>
+            </div>
+
+            <button class="back-btn" onclick="backToMenu()">[ ESC ] GO BACK</button>
+        </div>
     </div>
 
     <script>
-        const items = document.querySelectorAll('.menu-item');
-        let currentIndex = 0;
+        // State variables
+        let currentScreen = 'entrance';
+        let menuIndex = 0;
+        const menuItems = document.querySelectorAll('.menu-item');
 
-        // Keyboard support (Up / Down arrows & Enter)
+        // 1. Entrance Trigger
+        function enterGame() {
+            if (currentScreen !== 'entrance') return;
+            
+            document.getElementById('entranceScreen').classList.add('hidden');
+            document.getElementById('mainMenuScreen').classList.remove('hidden');
+            currentScreen = 'menu';
+        }
+
+        // 2. Open Website Content Pages ("Inside the website")
+        function openContent(pageType) {
+            document.getElementById('mainMenuScreen').classList.add('hidden');
+            const contentScreen = document.getElementById('contentScreen');
+            contentScreen.classList.remove('hidden');
+            currentScreen = 'content';
+
+            const title = document.getElementById('contentTitle');
+            const desc = document.getElementById('contentDesc');
+            const grid = document.getElementById('stageGrid');
+
+            // Change inside content layout dynamically depending on button pressed
+            if (pageType === 'story') {
+                title.innerText = "STORY MODE // CHANNELS";
+                desc.innerText = "Select an active spatial tear below to begin fighting the music rhythm parameters.";
+                grid.style.display = "grid";
+            } else if (pageType === 'freeplay') {
+                title.innerText = "FREEPLAY // SOUND TRACKS";
+                desc.innerText = "Select specific decrypted tracks: [Singularity] [Event-Horizon] [Null-Pointer].";
+                grid.style.display = "grid";
+            } else {
+                title.innerText = "SYSTEM SETTINGS";
+                desc.innerText = "Visual Calibration: CRT Filters Active. Glitch rate: 100%. Audio: Missing.";
+                grid.style.display = "none";
+            }
+        }
+
+        // 3. Go back to main menu
+        function backToMenu() {
+            document.getElementById('contentScreen').classList.add('hidden');
+            document.getElementById('mainMenuScreen').classList.remove('hidden');
+            currentScreen = 'menu';
+        }
+
+        // --- KEYBOARD & NAVIGATION CONTROLS ---
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown' || e.key === 's') {
-                changeSelection(1);
-            } else if (e.key === 'ArrowUp' || e.key === 'w') {
-                changeSelection(-1);
-            } else if (e.key === 'Enter') {
-                items[currentIndex].click();
+            if (currentScreen === 'entrance') {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    enterGame();
+                }
+            } 
+            else if (currentScreen === 'menu') {
+                if (e.key === 'ArrowDown' || e.key === 's') {
+                    navigateMenu(1);
+                } else if (e.key === 'ArrowUp' || e.key === 'w') {
+                    navigateMenu(-1);
+                } else if (e.key === 'Enter') {
+                    menuItems[menuIndex].click();
+                }
+            } 
+            else if (currentScreen === 'content') {
+                if (e.key === 'Escape') {
+                    backToMenu();
+                }
             }
         });
 
-        // Mouse hover synchronization
-        items.forEach((item, index) => {
+        function navigateMenu(direction) {
+            menuItems[menuIndex].classList.remove('selected');
+            menuIndex = (menuIndex + direction + menuItems.length) % menuItems.length;
+            menuItems[menuIndex].classList.add('selected');
+        }
+
+        // Mouse hover sync for menu items
+        menuItems.forEach((item, index) => {
             item.addEventListener('mouseenter', () => {
-                items[currentIndex].classList.remove('selected');
-                currentIndex = index;
+                menuItems[menuIndex].classList.remove('selected');
+                menuIndex = index;
                 item.classList.add('selected');
             });
         });
-
-        function changeSelection(direction) {
-            items[currentIndex].classList.remove('selected');
-            currentIndex = (currentIndex + direction + items.length) % items.length;
-            items[currentIndex].classList.add('selected');
-            
-            // Optional: You could add a quick SFX beep trigger here!
-        }
-
-        function selectOption(menu) {
-            // Triggered when clicking or pressing Enter
-            alert(`Entering the Void: ${menu.toUpperCase()}`);
-        }
     </script>
 </body>
 </html>
-
