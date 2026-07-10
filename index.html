@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIVIAN(JONASH) // VOID SINGULARITY</title>
+    <title>VIVIAN(JONASH) // ABSOLUTE VOID</title>
     <style>
         :root {
-            --space-black: #010003;
+            --space-black: #010002;
             --void-core: #000000;
-            --void-purple: #7e00ff;
-            --deep-violet: #2b0054;
+            --void-purple: rgba(126, 0, 255, 0.85);
+            --deep-violet: rgba(43, 0, 84, 0.6);
             --neon-cyan: #00f0ff;
             --font-display: 'Impact', 'Arial Black', sans-serif;
         }
@@ -31,12 +31,12 @@
             color: #fff;
         }
 
-        /* --- HARDWARE-ACCELERATED COSMIC BACKDROP --- */
+        /* --- HARDWARE-ACCELERATED HIGH-PERFORMANCE BACKDROP --- */
         .universe-bg {
             position: absolute;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle at center, #0a0114 0%, var(--space-black) 100%);
+            background: radial-gradient(circle at center, #07010f 0%, var(--space-black) 100%);
             z-index: 1;
             overflow: hidden;
             transform: translateZ(0);
@@ -48,66 +48,65 @@
             top: -50%; left: -50%;
             background-image: 
                 radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-                radial-gradient(rgba(126, 0, 255, 0.06) 2px, transparent 2px);
+                radial-gradient(rgba(126, 0, 255, 0.04) 2px, transparent 2px);
             background-size: 80px 80px, 160px 160px;
-            animation: cosmicDrift 80s linear infinite;
+            animation: cosmicDrift 120s linear infinite;
             z-index: 2;
             pointer-events: none;
+            transform: translate3d(0,0,0);
         }
 
-        /* --- CINEMATIC PURPLE REALISTIC BLACK HOLE --- */
-        /* Replicating the exact multi-angle gravitational warping structure from the image */
+        /* --- STABLE REALISTIC PURPLE BLACK HOLE --- */
         .black-hole-viewport {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate3d(-50%, -50%, 0);
             width: 90vmin; height: 90vmin;
-            max-width: 650px; max-height: 650px;
+            max-width: 620px; max-height: 620px;
             z-index: 3;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 1.3s cubic-bezier(0.7, 0, 0.2, 1), filter 1.3s ease;
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
             transform-style: preserve-3d;
         }
 
-        /* Horizontal Main Accretion Plane crossing the center */
+        /* Front-crossing flat accretion disk plane */
         .accretion-flat-disk {
             position: absolute;
-            width: 120%; height: 25%;
-            background: radial-gradient(ellipse at center, transparent 30%, var(--void-purple) 45%, var(--deep-violet) 65%, transparent 75%);
-            filter: blur(8px) contrast(1.6);
-            transform: rotate(-5deg);
+            width: 115%; height: 22%;
+            background: radial-gradient(ellipse at center, transparent 25%, var(--void-purple) 45%, var(--deep-violet) 65%, transparent 75%);
+            transform: rotate(-6deg) translateZ(0);
             z-index: 5;
-            opacity: 0.9;
-            animation: diskChurn 4s linear infinite alternate;
+            opacity: 0.95;
+            animation: diskChurn 5s ease-in-out infinite alternate;
         }
 
-        /* Vertically Warped Gravitational Lensing Arc over the top and bottom */
+        /* Gravity Lensing Arc wrapping top to bottom behind the core shadow */
         .gravitational-lens-vertical {
             position: absolute;
-            width: 80%; height: 80%;
+            width: 76%; height: 76%;
             border-radius: 50%;
-            border: 35px solid transparent;
-            border-top: 45px solid var(--void-purple);
-            border-bottom: 45px solid var(--deep-violet);
-            filter: blur(15px) contrast(1.4);
-            transform: scaleY(1.1) rotate(-5deg);
+            border: 30px solid transparent;
+            border-top: 40px solid var(--void-purple);
+            border-bottom: 40px solid var(--deep-violet);
+            transform: scaleY(1.12) rotate(-6deg) translateZ(0);
             z-index: 4;
-            opacity: 0.85;
-            animation: lensWobble 6s ease-in-out infinite alternate;
+            opacity: 0.9;
+            box-shadow: inset 0 0 30px rgba(126, 0, 255, 0.3);
+            animation: lensWobble 7s ease-in-out infinite alternate;
         }
 
-        /* Sharp Ray-Traced Shadow Core (The Event Horizon) */
+        /* Perfect Pitch-Black Spherical Singularity Shadow Core */
         .shadow-core {
-            width: 44%; height: 44%;
+            width: 42%; height: 42%;
             background: var(--void-core);
             border-radius: 50%;
             z-index: 6;
-            box-shadow: 0 0 40px #000, inset 0 0 50px #000;
+            box-shadow: 0 0 30px #000, inset 0 0 40px #000;
         }
 
-        /* --- STAGE STRUCTURAL INFRASTRUCTURE --- */
+        /* --- STAGE CONFIGURATIONS --- */
         .viewport-stage {
             position: absolute;
             top: 0; left: 0;
@@ -118,7 +117,7 @@
             align-items: center;
             z-index: 10;
             padding: 20px;
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .hidden {
@@ -126,21 +125,21 @@
             pointer-events: none !important;
         }
 
-        /* --- STAGE 1: LOADING TIMELINE --- */
+        /* --- STAGE 1: LOADING MATRIX --- */
         .loading-title {
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: clamp(2rem, 6vw, 3.5rem);
             font-style: italic;
             text-transform: uppercase;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             margin-bottom: 25px;
-            text-shadow: 0 0 15px var(--void-purple);
+            text-shadow: 0 0 15px rgba(126,0,255,0.6);
         }
 
         .bar-container {
-            width: min(85vw, 440px);
-            height: 10px;
+            width: min(85vw, 400px);
+            height: 8px;
             background: rgba(0, 0, 0, 0.8);
-            border: 2px solid var(--deep-violet);
+            border: 1.5px solid var(--deep-violet);
             border-radius: 2px;
             overflow: hidden;
         }
@@ -148,19 +147,19 @@
         .bar-fill {
             width: 0%; height: 100%;
             background: linear-gradient(90deg, var(--deep-violet), var(--void-purple));
-            box-shadow: 0 0 12px var(--void-purple);
+            box-shadow: 0 0 10px var(--void-purple);
             transition: width 0.1s linear;
         }
 
         .percentage-display {
             font-family: monospace;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-top: 15px;
             letter-spacing: 2px;
-            text-shadow: 0 0 8px var(--void-purple);
+            color: #fff;
         }
 
-        /* --- STAGE 2: BRANDING & TRANSPARENT SINGULARITY BUTTONS --- */
+        /* --- STAGE 2: TRANSPARENT LABEL BOX & TEXT BUTTONS --- */
         .system-branding {
             font-size: clamp(2.3rem, 6.5vw, 5.5rem);
             font-style: italic;
@@ -168,18 +167,20 @@
             margin-bottom: clamp(40px, 8vh, 70px);
             position: relative;
             display: inline-block;
-            background: transparent;
+            background: transparent; /* Transparent label box background */
+            border: none;
+            padding: 10px;
         }
 
         .system-branding .left-half {
             color: #fff;
-            text-shadow: 3px 3px 0px #000, 0 0 25px var(--void-purple);
+            text-shadow: 3px 3px 0px #000, 0 0 20px rgba(126, 0, 255, 0.8);
             padding-right: 4px;
         }
 
         .system-branding .right-half {
             color: #fff;
-            text-shadow: 3px 3px 0px #000, 0 0 25px var(--neon-cyan);
+            text-shadow: 3px 3px 0px #000, 0 0 20px var(--neon-cyan);
             padding-left: 4px;
         }
 
@@ -190,7 +191,7 @@
             left: 50%; top: 50%;
             transform: translate(-50%, -50%) rotate(12deg);
             color: #fff;
-            text-shadow: 0 0 15px #fff, 0 0 25px var(--neon-cyan);
+            text-shadow: 0 0 15px #fff, 0 0 20px var(--neon-cyan);
         }
 
         .action-cluster {
@@ -200,50 +201,49 @@
             width: min(90vw, 360px);
         }
 
-        /* Completely Transparent Text Button with Singularity Theme Text Styling */
+        /* Completely Transparent Text Button Configuration */
         .interactive-node {
-            background: transparent;
+            background: transparent; /* Completely transparent backdrop */
             color: #fff;
             border: none;
             font-family: var(--font-display);
             font-size: clamp(2rem, 4.5vw, 2.6rem);
             font-style: italic;
             text-transform: uppercase;
-            padding: 10px 20px;
+            padding: 12px 20px;
             cursor: pointer;
             outline: none;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px;
-            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.2);
-            text-shadow: 0 0 10px rgba(126, 0, 255, 0.5);
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+            text-shadow: 0 0 10px rgba(126, 0, 255, 0.4);
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Mini Singularity Anchors flanking the sides */
+        /* Flanking side singularities */
         .node-singularity {
-            width: 14px; height: 14px;
+            width: 12px; height: 12px;
             background: #000;
             border-radius: 50%;
-            box-shadow: 0 0 10px 4px var(--void-purple), 0 0 20px 6px var(--deep-violet);
-            transition: all 0.25s ease;
-            opacity: 0.6;
+            box-shadow: 0 0 10px 3px var(--void-purple), 0 0 18px 5px var(--deep-violet);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transform: translateZ(0);
         }
 
         .interactive-node:hover {
             color: var(--neon-cyan);
-            text-shadow: 0 0 15px var(--neon-cyan);
-            transform: scale(1.08);
+            text-shadow: 0 0 12px var(--neon-cyan);
+            transform: scale(1.05);
         }
 
         .interactive-node:hover .node-singularity {
-            opacity: 1;
-            box-shadow: 0 0 15px 6px var(--neon-cyan), 0 0 25px 8px #0077ff;
-            transform: scale(1.3);
+            box-shadow: 0 0 12px 5px var(--neon-cyan), 0 0 20px 7px #0077ff;
+            transform: scale(1.25);
         }
 
-        /* --- STAGE 3: MULTIVERSE HUB & CONTENT TRANSMISSION --- */
+        /* --- STAGE 3: UNKNOWN SPACE DATA INTERFACE --- */
         .multiverse-grid {
             position: absolute;
             width: 100%; height: 100%;
@@ -254,7 +254,7 @@
             justify-content: space-around;
             align-items: center;
             opacity: 0;
-            transition: opacity 1.5s ease;
+            transition: opacity 1.2s ease;
         }
 
         .multiverse-active { opacity: 1 !important; }
@@ -264,37 +264,38 @@
             width: 25vmin; height: 25vmin;
             background: #000;
             border-radius: 50%;
-            box-shadow: 0 0 30px var(--void-purple), 0 0 60px var(--deep-violet);
-            animation: targetFloat 10s ease-in-out infinite alternate;
+            box-shadow: 0 0 25px var(--void-purple), 0 0 50px var(--deep-violet);
+            animation: targetFloat 12s ease-in-out infinite alternate;
+            transform: translateZ(0);
         }
 
         .data-vault-panel {
-            width: min(92vw, 760px);
-            background: rgba(1, 0, 3, 0.94);
+            width: min(92vw, 740px);
+            background: rgba(1, 0, 3, 0.95);
             border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.15);
             padding: clamp(20px, 5vw, 40px);
-            border-radius: 8px;
+            border-radius: 6px;
             z-index: 15;
             display: flex;
             flex-direction: column;
         }
 
         .vault-title {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
             font-style: italic;
             text-transform: uppercase;
-            text-shadow: 0 0 15px var(--deep-violet);
+            text-shadow: 0 0 12px var(--void-purple);
             margin-bottom: 20px;
-            border-bottom: 1px dashed rgba(255,255,255,0.2);
+            border-bottom: 1px dashed rgba(255,255,255,0.15);
             padding-bottom: 10px;
         }
 
         .vault-body {
             font-family: sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.15rem);
-            line-height: 1.7;
-            color: #d1c7de;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            line-height: 1.6;
+            color: #cebfde;
             margin-bottom: 30px;
         }
 
@@ -302,12 +303,12 @@
             background: transparent;
             border: 2px solid var(--void-purple);
             color: #fff;
-            padding: 12px 30px;
+            padding: 10px 25px;
             font-family: var(--font-display);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: background 0.2s, box-shadow 0.2s;
             align-self: center;
         }
 
@@ -316,37 +317,36 @@
             box-shadow: 0 0 15px var(--void-purple);
         }
 
-        /* --- VISUAL DESTRUCTION TRANSFORM TRIGGERS --- */
+        /* --- CINEMATIC TRANSITIONS --- */
         .swallowed-by-singularity {
-            transform: translate3d(-50%, -50%, 0) scale(7) !important;
-            filter: blur(8px) brightness(0.1);
+            transform: translate3d(-50%, -50%, 0) scale(7.5) !important;
+            opacity: 0.05;
         }
 
         .menu-spaghettify {
-            transform: scale(0.4);
-            filter: blur(20px);
+            transform: scale(0.5);
             opacity: 0;
         }
 
-        /* --- ACCELERATED ANIMATIONS --- */
+        /* --- HARDWARE-OPTIMIZED ANIMATIONS --- */
         @keyframes cosmicDrift {
             0% { transform: translate3d(0,0,0); }
-            100% { transform: translate3d(-50px, -50px, 0); }
+            100% { transform: translate3d(-40px, -40px, 0); }
         }
 
         @keyframes diskChurn {
-            0% { transform: rotate(-5deg) scaleY(1); filter: blur(8px) contrast(1.5); }
-            100% { transform: rotate(-3deg) scaleY(1.08); filter: blur(10px) contrast(1.7); }
+            0% { transform: rotate(-6deg) scaleY(1); }
+            100% { transform: rotate(-4deg) scaleY(1.05); }
         }
 
         @keyframes lensWobble {
-            0% { transform: scaleY(1.1) rotate(-5deg); filter: blur(15px) contrast(1.3); }
-            100% { transform: scaleY(1.15) rotate(-3deg); filter: blur(18px) contrast(1.5); }
+            0% { transform: scaleY(1.12) rotate(-6deg); }
+            100% { transform: scaleY(1.16) rotate(-4deg); }
         }
 
         @keyframes targetFloat {
-            0% { transform: translate3d(0, 0, 0) scale(1); }
-            100% { transform: translate3d(-15px, -25px, 0) scale(1.03); }
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-10px, -20px, 0); }
         }
     </style>
 </head>
@@ -363,7 +363,7 @@
 
         <div class="multiverse-grid" id="multiverseField">
             <div class="mini-singularity" style="top: 15%; left: 8%; animation-delay: 0s; width: 14vmin; height: 14vmin;"></div>
-            <div class="mini-singularity" style="top: 68%; left: 12%; animation-delay: -2s; width: 26vmin; height: 26vmin;"></div>
+            <div class="mini-singularity" style="top: 68%; left: 12%; animation-delay: -2s; width: 25vmin; height: 25vmin;"></div>
             <div class="mini-singularity" style="top: 18%; right: 10%; animation-delay: -4s; width: 20vmin; height: 20vmin;"></div>
             <div class="mini-singularity" style="top: 64%; right: 6%; animation-delay: -1s; width: 16vmin; height: 16vmin;"></div>
         </div>
@@ -398,34 +398,34 @@
     <div id="vaultStage" class="viewport-stage hidden">
         <div class="data-vault-panel">
             <h2 class="vault-title" id="vaultHeader">UNKNOWN PLANE RECORD</h2>
-            <div class="vault-body" id="vaultContent">[SYNCHRONIZING SECURE METRICS...]</div>
+            <div class="vault-body" id="vaultContent">[SYNCHRONIZING...]</div>
             <button class="vault-close-btn" onclick="restoreFromUnknown()">[ ESCAPE MULTIVERSE ]</button>
         </div>
     </div>
 
     <script>
-        // Fluid Incremental Counter Logic
+        // Loading Tracking Routine
         window.addEventListener('DOMContentLoaded', () => {
             const bar = document.getElementById('progressBar');
             const txt = document.getElementById('progressText');
             let count = 0;
 
             const trackingLoop = setInterval(() => {
-                count += Math.floor(Math.random() * 5) + 2;
+                count += Math.floor(Math.random() * 6) + 3;
                 if (count >= 100) {
                     count = 100;
                     clearInterval(trackingLoop);
                     setTimeout(() => {
                         document.getElementById('loaderStage').classList.add('hidden');
                         document.getElementById('menuStage').classList.remove('hidden');
-                    }, 400);
+                    }, 350);
                 }
                 bar.style.width = count + "%";
                 txt.innerText = count + "%";
-            }, 35);
+            }, 30);
         });
 
-        // Cinematic Collapse and Transmit Sequence
+        // Cinematic Swallow / Multiverse Shift Sequence
         function swallowSequence(gameId) {
             const bh = document.getElementById('mainBlackHole');
             const menu = document.getElementById('menuStage');
@@ -443,7 +443,6 @@
                 body.innerHTML = "Acoustic control structures translated into non-linear vector frames. Local audio spectrum coordinates are currently maintaining stability within background tears.";
             }
 
-            // Engage physical consumption scale metrics
             bh.classList.add('swallowed-by-singularity');
             menu.classList.add('menu-spaghettify');
 
@@ -453,10 +452,10 @@
                 
                 vault.classList.remove('hidden');
                 fields.classList.add('multiverse-active');
-            }, 850);
+            }, 600);
         }
 
-        // Return core matrix structure back to baseline state
+        // Return Matrix Sequence
         function restoreFromUnknown() {
             const bh = document.getElementById('mainBlackHole');
             const menu = document.getElementById('menuStage');
@@ -476,4 +475,5 @@
         }
     </script>
 </body>
-</html>
+            </html>
+                                                  
