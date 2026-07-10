@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE VOID // ARCHIVE</title>
+    <title>🕳️</title>
     <style>
         :root {
-            --void-black: #020204;
-            --void-dark: #08080f;
-            --void-neon: #00ffff;
-            --void-magenta: #ff0055;
-            --font-display: 'Impact', 'Arial Black', sans-serif;
-            --font-mono: 'Courier New', Courier, monospace;
+            --abyss: #010103;
+            --distortion: rgba(160, 0, 255, 0.15);
+            --decay: #504060;
         }
 
         * {
@@ -25,366 +22,229 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: var(--void-black);
-            font-family: var(--font-mono);
-            color: #fff;
+            background-color: var(--abyss);
+            font-family: 'Georgia', serif; /* Less technical, more atmospheric */
+            color: #d1cbd6;
         }
 
-        /* --- BACKGROUND ENVIRONMENT --- */
-        .void-bg {
+        /* --- THE CONSTANT ABYSS BACKGROUND --- */
+        .void-universe {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, var(--void-dark) 0%, var(--void-black) 100%);
+            background: radial-gradient(circle at 50% 50%, #090514 0%, var(--abyss) 100%);
             z-index: 1;
         }
 
-        .crt-overlay {
+        /* Swirling visual distortions */
+        .nebula-distortion {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
-            background-size: 100% 4px;
-            z-index: 20;
+            width: 200%;
+            height: 200%;
+            top: -50%; left: -50%;
+            background: radial-gradient(ellipse at center, var(--distortion) 0%, transparent 60%);
+            filter: blur(40px);
+            animation: cosmicSwirl 25s linear infinite;
+            z-index: 2;
             pointer-events: none;
-            opacity: 0.4;
         }
 
-        /* --- SCREEN ARCHITECTURE --- */
+        /* --- SCREENS --- */
         .screen {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 5;
-            transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), filter 1.5s ease;
         }
 
-        .hidden {
+        .shrouded {
             opacity: 0;
             pointer-events: none;
-            transform: scale(1.1) rotate(1deg); /* Explodes outward visually */
+            filter: blur(20px);
         }
 
-        /* --- CUSTOM VOID ENTRANCE SCREEN --- */
+        /* --- THE TRUE VOID ENTRANCE --- */
         #entranceScreen {
             cursor: pointer;
-            background-color: var(--void-black);
         }
 
-        /* Abstract Void Event Horizon Object */
-        .singularity {
+        /* An unsettling, warping singularity core */
+        .anomaly-core {
             position: relative;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+            width: 180px;
+            height: 180px;
             background: #000;
-            box-shadow: 0 0 40px 10px rgba(0, 255, 255, 0.2), 0 0 80px 20px rgba(255, 0, 85, 0.1);
-            margin-bottom: 50px;
-            animation: pulseCore 4s ease-in-out infinite;
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; /* Organic distortion */
+            box-shadow: 
+                0 0 40px #000,
+                inset 0 0 20px rgba(0,0,0,1),
+                0 0 50px 10px rgba(70, 0, 130, 0.4);
+            animation: warpCore 6s ease-in-out infinite alternate;
+            margin-bottom: 60px;
         }
 
-        /* Spinning accretion disk */
-        .singularity::after {
-            content: '';
-            position: absolute;
-            top: -15px; left: -15px; right: -15px; bottom: -15px;
-            border-radius: 50%;
-            border: 2px dashed rgba(255, 255, 255, 0.15);
-            border-left-color: var(--void-neon);
-            border-right-color: var(--void-magenta);
-            animation: spinDisk 12s linear infinite;
+        /* Whispering text */
+        .void-whisper {
+            font-size: 2.2rem;
+            font-style: italic;
+            letter-spacing: 12px;
+            color: #fff;
+            opacity: 0.8;
+            text-shadow: 0 0 15px rgba(255,255,255,0.2);
+            animation: fadeWhisper 4s ease-in-out infinite;
+            text-align: center;
         }
 
-        .terminal-header {
-            font-size: 0.9rem;
+        /* --- THE INSIDE OF THE WEBSITE --- */
+        .abyssal-gate {
+            max-width: 650px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .manifest-title {
+            font-size: 3.5rem;
+            font-weight: 300;
             letter-spacing: 6px;
-            color: #444455;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .void-title {
-            font-family: var(--font-display);
-            font-size: 5rem;
-            letter-spacing: 15px;
-            text-transform: uppercase;
             color: #fff;
-            text-align: center;
-            line-height: 1;
-            margin-bottom: 40px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            text-shadow: 0 0 25px rgba(147, 112, 219, 0.3);
         }
 
-        .initialize-trigger {
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            color: var(--void-neon);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            padding: 12px 24px;
-            background: rgba(0, 255, 255, 0.02);
-            transition: all 0.3s ease;
-        }
-
-        #entranceScreen:hover .initialize-trigger {
-            color: #fff;
-            background: var(--void-magenta);
-            border-color: var(--void-magenta);
-            box-shadow: 0 0 15px var(--void-magenta);
-            transform: scale(1.05);
-        }
-
-        /* --- INTERIOR: MENU SCREEN --- */
-        .menu-header {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            letter-spacing: 4px;
-            margin-bottom: 50px;
-            color: #fff;
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-            width: 300px;
-            text-align: center;
-        }
-
-        .menu-options {
+        /* Floating chunks of the website floating in space */
+        .abyss-fragments {
             display: flex;
             flex-direction: column;
-            gap: 25px;
-            width: 280px;
+            gap: 40px;
+            margin-top: 50px;
         }
 
-        .menu-item {
+        .fragment {
             background: transparent;
-            border: 1px solid #222;
-            color: #666;
-            font-family: var(--font-mono);
-            font-size: 1.1rem;
-            padding: 15px;
-            cursor: pointer;
-            text-align: left;
-            letter-spacing: 2px;
-            transition: all 0.2s ease;
+            border: none;
             outline: none;
-            position: relative;
-        }
-
-        .menu-item::before {
-            content: '// ';
-            color: transparent;
-        }
-
-        .menu-item.selected, .menu-item:hover {
-            color: var(--void-neon);
-            border-color: var(--void-neon);
-            background: rgba(0, 255, 255, 0.03);
-            padding-left: 25px;
-        }
-
-        .menu-item.selected::before, .menu-item:hover::before {
-            color: var(--void-neon);
-        }
-
-        /* --- INTERIOR: CONTENT PAGES --- */
-        .content-box {
-            width: 90%;
-            max-width: 800px;
-            background: rgba(2, 2, 4, 0.95);
-            border: 1px solid #222;
-            padding: 40px;
-            position: relative;
-        }
-
-        .content-box::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: var(--void-neon);
-        }
-
-        .content-title {
-            font-family: var(--font-display);
-            font-size: 2.2rem;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .content-body {
-            color: #888;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-
-        .data-stream {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .data-node {
-            border: 1px solid #1a1a26;
-            padding: 15px;
-            background: rgba(255,255,255,0.01);
-        }
-
-        .data-node h4 { color: #fff; margin-bottom: 5px; font-size: 0.9rem;}
-        .data-node p { font-size: 0.8rem; color: #555; }
-
-        .back-btn {
-            background: transparent;
-            border: 1px solid #444;
-            color: #888;
-            padding: 10px 20px;
-            font-family: var(--font-mono);
+            font-family: inherit;
+            color: var(--decay);
+            font-size: 1.8rem;
+            font-style: italic;
             cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
+            transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
         }
 
-        .back-btn:hover {
-            border-color: #fff;
+        .fragment:hover {
             color: #fff;
+            transform: scale(1.05) translateY(-2px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(147, 112, 219, 0.5);
+        }
+
+        /* Deep Interior content text */
+        .echo-manifesto {
+            font-size: 1.1rem;
+            line-height: 2;
+            letter-spacing: 2px;
+            color: #a49ba9;
+            max-width: 500px;
+            margin: 0 auto 50px auto;
+            animation: floatWhisper 6s ease-in-out infinite;
         }
 
         /* --- ANIMATIONS --- */
-        @keyframes pulseCore {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.08); opacity: 1; box-shadow: 0 0 60px 15px rgba(0, 255, 255, 0.3), 0 0 100px 30px rgba(255, 0, 85, 0.2); }
+        @keyframes cosmicSwirl {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        @keyframes spinDisk {
-            100% { transform: rotate(360deg); }
+        @keyframes warpCore {
+            0% {
+                transform: scale(1) rotate(0deg);
+                border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            }
+            50% {
+                transform: scale(1.15) rotate(180deg);
+                border-radius: 40% 60% 35% 65% / 40% 65% 35% 60%;
+                box-shadow: 0 0 70px 20px rgba(90, 0, 180, 0.5);
+            }
+            100% {
+                transform: scale(0.95) rotate(360deg);
+                border-radius: 50% 50% 60% 40% / 55% 35% 65% 45%;
+            }
+        }
+
+        @keyframes fadeWhisper {
+            0%, 100% { opacity: 0.3; filter: blur(1px); }
+            50% { opacity: 0.8; filter: blur(0px); }
+        }
+
+        @keyframes floatWhisper {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
     </style>
 </head>
 <body>
 
-    <div class="void-bg"></div>
-    <div class="crt-overlay"></div>
+    <div class="void-universe"></div>
+    <div class="nebula-distortion"></div>
 
-    <!-- 1. CUSTOM ATMOSPHERIC VOID ENTRANCE -->
-    <div id="entranceScreen" class="screen" onclick="breachVoid()">
-        <div class="terminal-header">CONNECTION_ESTABLISHED // PROTOCOL_00</div>
-        <div class="singularity"></div>
-        <h1 class="void-title">THE VOID</h1>
-        <div class="initialize-trigger">INITIALIZE CORE BREACH</div>
+    <!-- 1. ENTRANCE SCREEN (THE SINGULARITY ANOMALY) -->
+    <div id="entranceScreen" class="screen" onclick="descend()">
+        <div class="anomaly-core"></div>
+        <div class="void-whisper">sink into the nothingness</div>
     </div>
 
-    <!-- 2. SYSTEM MAIN MENU -->
-    <div id="mainMenuScreen" class="screen hidden">
-        <h2 class="menu-header">SYSTEM INDEX</h2>
-        <div class="menu-options">
-            <button class="menu-item selected" onclick="loadModule('nodes')">Data Nodes</button>
-            <button class="menu-item" onclick="loadModule('terminal')">Terminal Feed</button>
-            <button class="menu-item" onclick="loadModule('status')">Core Status</button>
+    <!-- 2. THE INSIDE (MAIN INTERIOR GATE) -->
+    <div id="interiorMenu" class="screen shrouded">
+        <div class="abyssal-gate">
+            <h1 class="manifest-title">The Deep</h1>
+            
+            <div class="abyss-fragments">
+                <button class="fragment" onclick="manifestEcho('abyss')">Echos of Nada</button>
+                <button class="fragment" onclick="manifestEcho('horizon')">Event Horizon</button>
+                <button class="fragment" onclick="manifestEcho('oblivion')">Total Oblivion</button>
+            </div>
         </div>
     </div>
 
-    <!-- 3. INTERNAL SITE CONTENT -->
-    <div id="contentScreen" class="screen hidden">
-        <div class="content-box">
-            <h2 id="moduleTitle" class="content-title">MODULE_NULL</h2>
-            <p id="moduleDesc" class="content-body">Querying database structure...</p>
-            
-            <div class="data-stream" id="moduleData">
-                <div class="data-node">
-                    <h4>Sector_01_A</h4>
-                    <p>Sub-atomic decay structural telemetry: stable.</p>
-                </div>
-                <div class="data-node">
-                    <h4>Sector_01_B</h4>
-                    <p>Encryption sequence payload: corrupted context.</p>
-                </div>
-            </div>
-
-            <button class="back-btn" onclick="returnToMenu()">[ ESC ] RETURN TO MENU</button>
+    <!-- 3. DEEPER INSIDE INSIDE THE WEBSITE CONTENT PAGES -->
+    <div id="contentManifest" class="screen shrouded">
+        <div class="abyssal-gate">
+            <p class="echo-manifesto" id="echoText">...</p>
+            <button class="fragment" style="font-size: 1.1rem; color: #fff;" onclick="ascendToGate()">[ Dissolve Back ]</button>
         </div>
     </div>
 
     <script>
-        let viewState = 'entrance';
-        let selectionIndex = 0;
-        const choices = document.querySelectorAll('.menu-item');
-
-        // Breach void screen sequence
-        function breachVoid() {
-            if (viewState !== 'entrance') return;
-            document.getElementById('entranceScreen').classList.add('hidden');
-            document.getElementById('mainMenuScreen').classList.remove('hidden');
-            viewState = 'menu';
+        // Smooth scene sequence controller
+        function descend() {
+            document.getElementById('entranceScreen').classList.add('shrouded');
+            document.getElementById('interiorMenu').classList.remove('shrouded');
         }
 
-        // Inside layout content populator
-        function loadModule(moduleType) {
-            document.getElementById('mainMenuScreen').classList.add('hidden');
-            document.getElementById('contentScreen').classList.remove('hidden');
-            viewState = 'content';
+        function manifestEcho(type) {
+            document.getElementById('interiorMenu').classList.add('shrouded');
+            const target = document.getElementById('contentManifest');
+            const textElement = document.getElementById('echoText');
+            
+            target.classList.remove('shrouded');
 
-            const mTitle = document.getElementById('moduleTitle');
-            const mDesc = document.getElementById('moduleDesc');
-            const mData = document.getElementById('moduleData');
-
-            if (moduleType === 'nodes') {
-                mTitle.innerText = "ACCESSED_NODES // ARCHIVE";
-                mDesc.innerText = "Parsing decentralized void storage clusters. Deep memory fragments isolated successfully.";
-                mData.style.display = "grid";
-            } else if (moduleType === 'terminal') {
-                mTitle.innerText = "REALTIME_FEED // LOGS";
-                mDesc.innerText = "Listening to silent frequencies from event horizon sensors. No biological organisms detected.";
-                mData.style.display = "none";
+            if (type === 'abyss') {
+                textElement.innerHTML = "“There is no time here. Matter breaks down. The memory of light ceases to exist. You have bypassed existence itself, stumbling upon a dead vacuum where structural websites mean nothing.”";
+            } else if (type === 'horizon') {
+                textElement.innerHTML = "“Everything pulled down to this depth stays here forever. Light loops eternally around the center gravity point. Your awareness is drifting into a quiet, infinite stretching of coordinates.”";
             } else {
-                mTitle.innerText = "CORE_TELEMETRY // DIAGNOSTIC";
-                mDesc.innerText = "Singularity Mass: Infinite. Entropy Rate: 0.00%. Stability: Compromised.";
-                mData.style.display = "none";
+                textElement.innerHTML = "“Silence. Pure emptiness. The structural framework has completely faded out. You are viewing a localized collapse.”";
             }
         }
 
-        function returnToMenu() {
-            document.getElementById('contentScreen').classList.add('hidden');
-            document.getElementById('mainMenuScreen').classList.remove('hidden');
-            viewState = 'menu';
+        function ascendToGate() {
+            document.getElementById('contentManifest').classList.add('shrouded');
+            document.getElementById('interiorMenu').classList.remove('shrouded');
         }
-
-        // Dynamic System Control Inputs
-        document.addEventListener('keydown', (e) => {
-            if (viewState === 'entrance') {
-                if (e.key === 'Enter' || e.key === ' ') breachVoid();
-            } 
-            else if (viewState === 'menu') {
-                if (e.key === 'ArrowDown' || e.key === 's') navigateIndex(1);
-                else if (e.key === 'ArrowUp' || e.key === 'w') navigateIndex(-1);
-                else if (e.key === 'Enter') choices[selectionIndex].click();
-            } 
-            else if (viewState === 'content') {
-                if (e.key === 'Escape') returnToMenu();
-            }
-        });
-
-        function navigateIndex(offset) {
-            choices[selectionIndex].classList.remove('selected');
-            selectionIndex = (selectionIndex + offset + choices.length) % choices.length;
-            choices[selectionIndex].classList.add('selected');
-        }
-
-        choices.forEach((element, idx) => {
-            element.addEventListener('mouseenter', () => {
-                choices[selectionIndex].classList.remove('selected');
-                selectionIndex = idx;
-                element.classList.add('selected');
-            });
-        });
     </script>
 </body>
 </html>
+
